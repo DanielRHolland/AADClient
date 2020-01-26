@@ -1,3 +1,45 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <a class="navbar-brand" href="/cushomepage">
+                <img src="assets/Images/placeholder.png" alt="logo">
+            </a>
+            <li class="nav-item active">
+                <a class="nav-item nav-link" routerLink="/loginpage">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" routerLink="/cushomepage">Customer Home Page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" routerLink="/staffhomepage">Staff Home Page</a>
+            </li>
+        </ul>
+    
+    </div>
+    <div class="search-container">
+          <form action="/action_page.php">
+            <input type="text" placeholder="Search..." name="search">
+            <button type="submit">Submit</button>
+          </form>
+    </div>
 
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-item nav-link" routerLink="/accountinfopage">Account Information</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-<router-outlet></router-outlet>
+<!-- main content container -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
