@@ -12,7 +12,7 @@ export class ProductsService {
 
 
   public getProducts(orderBy: string = "default", searchTerms: string = "", count: number = 10) {
-    return this.httpClient.get('./exampleProducts.json');
+    return this.httpClient.get('http://localhost:3000/exampleProducts.json');
   }
 
 }

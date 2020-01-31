@@ -36,7 +36,6 @@ import { ProductsPageComponent } from './customer-pages/products-page/products-p
     CustomerPagesComponent,
     StaffPagesComponent,
     AccountInfoComponent,
-    ProductsService,
     ProductsPageComponent
   ],
   imports: [
