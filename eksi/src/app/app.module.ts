@@ -36,7 +36,6 @@ import { ProductsPageComponent } from './customer-pages/products-page/products-p
     CustomerPagesComponent,
     StaffPagesComponent,
     AccountInfoComponent,
-    ProductsService,
     ProductsPageComponent
   ],
   imports: [
@@ -49,4 +48,5 @@ import { ProductsPageComponent } from './customer-pages/products-page/products-p
   providers: [ ProductsService ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
