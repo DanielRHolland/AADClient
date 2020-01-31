@@ -48,4 +48,5 @@ import { ProductsPageComponent } from './customer-pages/products-page/products-p
   providers: [ ProductsService ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
