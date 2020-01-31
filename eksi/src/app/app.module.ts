@@ -20,6 +20,7 @@ import { AccountInfoComponent } from './account-info/account-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ProductsService } from './services/products.service';
+import { ProductsPageComponent } from './customer-pages/products-page/products-page.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ProductsService } from './services/products.service';
     CustomerPagesComponent,
     StaffPagesComponent,
     AccountInfoComponent,
-    ProductsService
+    ProductsService,
+    ProductsPageComponent
   ],
   imports: [
     BrowserModule,
