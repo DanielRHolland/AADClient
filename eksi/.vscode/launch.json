@@ -8,9 +8,9 @@
       "name": "Launch Chrome eksi on Angular CLI Server",
       "type": "chrome",
       "request": "launch",
-      "port": 9225,
+      "port": 9276,
       "webRoot": "${workspaceFolder}",
-      "url": "http://localhost:4201/#"
+      "url": "http://localhost:4200/#"
     }
   ]
 }

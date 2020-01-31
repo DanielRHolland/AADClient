@@ -17,6 +17,7 @@ import { DemoMaterialModule } from './material-module';
 import { CustomerPagesComponent } from './customer-pages/customer-pages.component';
 import { StaffPagesComponent } from './staff-pages/staff-pages.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
+import { ProductsPageComponent } from './customer-pages/products-page/products-page.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     LoginPageComponent,
     CustomerPagesComponent,
     StaffPagesComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    ProductsPageComponent
   ],
   imports: [
     BrowserModule,
