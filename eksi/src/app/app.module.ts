@@ -17,6 +17,9 @@ import { DemoMaterialModule } from './material-module';
 import { CustomerPagesComponent } from './customer-pages/customer-pages.component';
 import { StaffPagesComponent } from './staff-pages/staff-pages.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ProductsService } from './services/products.service';
 
 @NgModule({
   declarations: [
@@ -31,15 +34,17 @@ import { AccountInfoComponent } from './account-info/account-info.component';
     LoginPageComponent,
     CustomerPagesComponent,
     StaffPagesComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    ProductsService
   ],
   imports: [
     BrowserModule,
     appRoutingModule,
     FormsModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ ProductsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
