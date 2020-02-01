@@ -12,6 +12,8 @@ import { ProductsComponent } from './products/products.component';
 import { UserComponent } from './user/user.component';
 import { HistoryComponent } from './history/history.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { MyModalComponent } from './customer-pages/customer-home-page/my-modal/my-modal.component';
+
 
 import { DemoMaterialModule } from './material-module';
 import { CustomerPagesComponent } from './customer-pages/customer-pages.component';
@@ -36,7 +38,8 @@ import { ProductsPageComponent } from './staff-pages/products-page/products-page
     CustomerPagesComponent,
     StaffPagesComponent,
     AccountInfoComponent,
-    ProductsPageComponent
+    ProductsPageComponent,
+    MyModalComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { ProductsPageComponent } from './staff-pages/products-page/products-page
     BrowserAnimationsModule
   ],
   providers: [ ProductsService ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MyModalComponent]
 })
 
 export class AppModule { }
