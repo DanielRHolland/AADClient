@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { MyModalComponent } from './my-modal/my-modal.component';
+import { CheckoutModalComponent } from './checkout-modal/checkout-modal.component';
 
 @Component({
   selector: 'app-home',
@@ -21,12 +22,22 @@ export class CustomerHomeComponent implements OnInit
 
   }
 
-  openDialog()
+  openDialog_AddItem()
   {
     const dialogRef = this.dialog.open(MyModalComponent,
     {
-      //width: '500px',
-     
+
+    });
+
+    // Assigns users entered data to 'colour: string' once complete
+    dialogRef.afterClosed().subscribe();
+  }
+
+  openDialog_CheckoutItems()
+  {
+    const dialogRef = this.dialog.open(CheckoutModalComponent,
+    {
+
     });
 
     // Assigns users entered data to 'colour: string' once complete

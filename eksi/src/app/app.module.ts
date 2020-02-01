@@ -6,14 +6,12 @@ import { appRoutingModule } from './app.routing';
 import { CustomerHomeComponent } from './customer-pages/customer-home-page/home.component';
 import { StaffHomeComponent } from './staff-pages/staff-home-page/home.component';
 
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
 import { ProductsComponent } from './products/products.component';
-import { UserComponent } from './user/user.component';
-import { HistoryComponent } from './history/history.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MyModalComponent } from './customer-pages/customer-home-page/my-modal/my-modal.component';
-
+import { ScanModalComponent } from './customer-pages/customer-home-page/scan-modal/scan-modal.component';
+import { ManualModalComponent } from './customer-pages/customer-home-page/manual-modal/manual-modal.component';
+import { CheckoutModalComponent } from './customer-pages/customer-home-page/checkout-modal/checkout-modal.component'
 
 import { DemoMaterialModule } from './material-module';
 import { CustomerPagesComponent } from './customer-pages/customer-pages.component';
@@ -29,17 +27,16 @@ import { ProductsPageComponent } from './staff-pages/products-page/products-page
     AppComponent,
     CustomerHomeComponent,
     StaffHomeComponent,
-    AboutComponent,
-    ContactComponent,
     ProductsComponent,
-    UserComponent,
-    HistoryComponent,
     LoginPageComponent,
     CustomerPagesComponent,
     StaffPagesComponent,
     AccountInfoComponent,
     ProductsPageComponent,
-    MyModalComponent
+    MyModalComponent,
+    ScanModalComponent,
+    ManualModalComponent,
+    CheckoutModalComponent
   ],
   imports: [
     BrowserModule,
@@ -49,8 +46,11 @@ import { ProductsPageComponent } from './staff-pages/products-page/products-page
     BrowserAnimationsModule
   ],
   providers: [ ProductsService ],
-  bootstrap: [AppComponent],
-  entryComponents: [MyModalComponent]
+  bootstrap: [ AppComponent ],
+  entryComponents: [ MyModalComponent,
+    ScanModalComponent,
+    ManualModalComponent,
+    CheckoutModalComponent ]
 })
 
 export class AppModule { }

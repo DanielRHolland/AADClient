@@ -1,5 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ScanModalComponent } from '../scan-modal/scan-modal.component';
+import { ManualModalComponent } from '../manual-modal/manual-modal.component';
 
 @Component({
   selector: 'app-my-modal',
@@ -7,10 +10,13 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   styleUrls: ['./my-modal.component.css']
 })
 
-export class MyModalComponent implements OnInit 
+export class MyModalComponent implements OnInit
 {
 
-  constructor(public dialogRef: MatDialogRef<MyModalComponent>)
+  constructor(public dialog: MatDialog,
+    public dialogRef: MatDialogRef<MyModalComponent>,
+    public dialogRef_Scan: MatDialogRef<ScanModalComponent>,
+    public dialogRef_Manual: MatDialogRef<ManualModalComponent>)
   { 
 
   }
@@ -23,5 +29,29 @@ export class MyModalComponent implements OnInit
   ngOnInit()
   {
 
+  }
+
+  openDialog_Scan()
+  {
+    this.onNoClick();
+
+    const dialogRef_Scan = this.dialog.open(ScanModalComponent,
+    {
+     
+    });
+
+    dialogRef_Scan.afterClosed().subscribe();
+  }
+
+  openDialog_Manual()
+  {
+    this.onNoClick();
+
+    const dialogRef_Manual = this.dialog.open(ManualModalComponent,
+    {
+     
+    });
+
+    dialogRef_Manual.afterClosed().subscribe();
   }
 }
