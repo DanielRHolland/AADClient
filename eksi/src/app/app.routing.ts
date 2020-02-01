@@ -4,7 +4,7 @@ import { CustomerHomeComponent } from './customer-pages/customer-home-page/home.
 import { StaffHomeComponent } from './staff-pages/staff-home-page/home.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
-import { ProductsPageComponent } from './customer-pages/products-page/products-page.component';
+import { ProductsPageComponent } from './staff-pages/products-page/products-page.component';
 
 const routes: Routes = [
     { path: 'cushomepage', component: CustomerHomeComponent },
