@@ -20,6 +20,7 @@ import { AccountInfoComponent } from './account-info/account-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ProductsService } from './services/products.service';
+import { TransactionsService } from './services/transactions.service';
 import { ProductsPageComponent } from './customer-pages/products-page/products-page.component';
 
 @NgModule({
@@ -45,7 +46,7 @@ import { ProductsPageComponent } from './customer-pages/products-page/products-p
     DemoMaterialModule,
     BrowserAnimationsModule
   ],
-  providers: [ ProductsService ],
+  providers: [ ProductsService, TransactionsService ],
   bootstrap: [AppComponent]
 })
 
