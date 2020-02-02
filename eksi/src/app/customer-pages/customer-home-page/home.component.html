@@ -1,11 +1,34 @@
+<div class="container">    
+  <table class="table table-bordered table-hover">
+	<div *ngIf="products">
+    <tr>
+      <th>Number of Product</th>    
+      <th>Product Image</th>
+      <th>Product Name</th>
+      <th>Order Quantity</th>    
+      <th>Remove Item?</th>    
+    </tr>
+    <tr *ngFor="let product of products">
+      <td>{{product.id}}</td>   
+      <td>{{product.name}}</td>    
+      <td>{{product.quantity}}</td>    
+      <td>{{product.locationName}}</td>    
+      <td>{{product.expiryDate}}</td> 
+      <td>{{product.costPrice}}</td>
+      <td>{{product.description}}</td>
+    </tr>
+	</div>   
+  </table> 
+</div>
+
 <div class="buttons">
   <div class="container" div style="float:left;">
     <img src="assets/Images/placeholder.png" alt="Snow">
-    <button class="btn"> Transaction Log Page </button>
+    <button class="btn" (click)="openDialog_AddItem()"> Add Item </button>
   </div>
 
   <div class="container" div style="float:left;">
     <img src="assets/Images/placeholder.png" alt="Snow">
-    <button class="btn" button (click)="router.navigate(['/productspage']);"> Products Page </button>
+    <button class="btn" (click)="openDialog_CheckoutItems()"> Check Out </button>
   </div>
 </div>

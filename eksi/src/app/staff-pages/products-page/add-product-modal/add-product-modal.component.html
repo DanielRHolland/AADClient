@@ -1,0 +1,40 @@
+<!--dialog box table code-->
+<h1 mat-dialog-title> Hello User </h1>
+
+<div mat-dialog-content>
+  <p>
+    Please fill in the below details:
+  </p>
+
+  <form action="/action_page.php">
+    Image upload:   
+    <input type="button" value="Upload">
+    <br><br>
+
+    Name:<br>
+    <input type="text" name="productname">
+    <br><br>
+
+    Product Code:<br>
+    <input type="text" name="productcode">
+    <br><br>
+
+    Product Code:<br>
+    <input type="number" name="productcode">
+    <br><br>
+
+    Current Stock:<br>
+    <input type="number" name="currentstock">
+    <br><br>
+
+    Basic Description:<br>
+    <input type="text" name="basicdescription">
+    <br><br>
+
+    <input type="submit" value="Save Record">
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close prompt</button>
+</div>

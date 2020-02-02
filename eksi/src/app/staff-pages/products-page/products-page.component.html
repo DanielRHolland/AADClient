@@ -1,0 +1,50 @@
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- The form -->
+<form class="example" action="action_page.php">
+  <input type="text" placeholder="Search a product code..." name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+<!-- Table displaying products -->
+<div class="container">    
+  <table class="table table-bordered table-hover">
+	<div *ngIf="products">
+    <tr>
+      <th>Product ID</th>    
+      <th>Product Name</th>
+      <th>Product Quantity</th>
+      <th>Location Name</th>    
+      <th>Expiry Date</th>    
+      <th>Cost Price</th>
+      <th>Product Description</th>
+	  </tr>
+    <tr *ngFor="let product of products">
+      <td>{{product.id}}</td>   
+      <td>{{product.name}}</td>    
+      <td>{{product.quantity}}</td>    
+      <td>{{product.locationName}}</td>    
+      <td>{{product.expiryDate}}</td> 
+      <td>{{product.costPrice}}</td>
+      <td>{{product.description}}</td>
+    </tr>  
+	</div>   
+  </table> 
+</div>
+
+<div class="buttons">
+  <div class="container" div style="float:left;">
+    <img src="assets/Images/placeholder.png" alt="Snow">
+    <button class="btn" (click)="openDialog_AddProduct()"> Add Product </button>
+  </div>
+
+  <div class="container" div style="float:left;">
+    <img src="assets/Images/placeholder.png" alt="Snow">
+    <button class="btn" (click)="openDialog_EditProduct()"> Edit Product </button>
+  </div>
+  <div class="container" div style="float:left;">
+    <img src="assets/Images/placeholder.png" alt="Snow">
+    <button class="btn" (click)="openDialog_DeleteProduct()"> Delete Product </button>
+  </div>
+</div>
