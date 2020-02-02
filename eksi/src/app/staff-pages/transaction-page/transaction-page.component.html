@@ -1,0 +1,47 @@
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- The form -->
+<form class="example" action="action_page.php">
+  <input type="text" placeholder="Search a transaction code..." name="searchtransaction">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+<!-- Table displaying products -->
+<div class="container">    
+  <table class="table table-bordered table-hover">
+	<div *ngIf="transactions">
+    <tr>
+      <th>Transaction ID</th>    
+      <th>User ID</th>
+      <th>Used Budget Code</th>
+      <th>Time of Transaction</th>    
+      <th>Number of Transactions</th>    
+	  </tr>
+    <tr *ngFor="let transaction of transactions">
+      <td>{{transaction.id}}</td>   
+      <td>{{transaction.userid}}</td>    
+      <td>{{transaction.usedbudgetcode}}</td>    
+      <td>{{transaction.timeoftransaction}}</td>    
+      <td>{{transaction.numberoftransactions}}</td> 
+    </tr>  
+	</div>   
+  </table> 
+</div>
+
+<div class="buttons">
+  <div class="container" div style="float:left;">
+    <img src="assets/Images/placeholder.png" alt="Snow">
+    <button class="btn" (click)="openDialog_AddTransaction()"> Add Transaction Log </button>
+  </div>
+
+  <div class="container" div style="float:left;">
+    <img src="assets/Images/placeholder.png" alt="Snow">
+    <button class="btn" (click)="openDialog_EditTransaction()"> Edit Transaction Log </button>
+  </div>
+
+  <div class="container" div style="float:left;">
+    <img src="assets/Images/placeholder.png" alt="Snow">
+    <button class="btn" (click)="openDialog_DeleteTransaction()"> Delete Transaction Log </button>
+  </div>
+</div>

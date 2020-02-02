@@ -1,0 +1,21 @@
+<!--dialog box table code-->
+<h1 mat-dialog-title> Hello User </h1>
+
+<div mat-dialog-content>
+  <p>
+    Please enter the ID of the product you wish to delete:
+  </p>
+
+  <form action="/action_page.php">
+
+    Product ID:<br>
+    <input type="text" name="productname">
+    <br><br>
+
+    <input type="submit" value="Delete Product">
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close prompt</button>
+</div>
