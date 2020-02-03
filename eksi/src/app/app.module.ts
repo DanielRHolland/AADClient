@@ -29,9 +29,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductsService } from './services/products/products.service';
 import { TransactionsService } from './services/transactions/transactions.service';
 import { ConnectionSettingsService } from './services/connection-settings/connection-settings.service';
+import { AuthoService } from './services/autho/autho.service';
+import { StaffService } from './services/staff/staff.service';
 
 import { ProductsPageComponent } from './staff-pages/products-page/products-page.component';
 import { TransactionPageComponent } from './staff-pages/transaction-page/transaction-page.component';
+
 
 @NgModule({
   declarations: [
@@ -63,7 +66,11 @@ import { TransactionPageComponent } from './staff-pages/transaction-page/transac
     DemoMaterialModule,
     BrowserAnimationsModule
   ],
-  providers: [ ProductsService, TransactionsService, ConnectionSettingsService ],
+  providers: [ ProductsService,
+     TransactionsService,
+     ConnectionSettingsService,
+     AuthoService,
+    StaffService ],
   bootstrap: [ AppComponent ],
   entryComponents: [ MyModalComponent,
     ScanModalComponent,
