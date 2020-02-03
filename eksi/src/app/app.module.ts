@@ -26,8 +26,10 @@ import { DeleteProductModalComponent } from './staff-pages/products-page/delete-
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ProductsService } from './services/products.service';
-import { TransactionsService } from './services/transactions.service';
+import { ProductsService } from './services/products/products.service';
+import { TransactionsService } from './services/transactions/transactions.service';
+import { ConnectionSettingsService } from './services/connection-settings/connection-settings.service';
+
 import { ProductsPageComponent } from './staff-pages/products-page/products-page.component';
 import { TransactionPageComponent } from './staff-pages/transaction-page/transaction-page.component';
 
@@ -61,7 +63,7 @@ import { TransactionPageComponent } from './staff-pages/transaction-page/transac
     DemoMaterialModule,
     BrowserAnimationsModule
   ],
-  providers: [ ProductsService, TransactionsService ],
+  providers: [ ProductsService, TransactionsService, ConnectionSettingsService ],
   bootstrap: [ AppComponent ],
   entryComponents: [ MyModalComponent,
     ScanModalComponent,

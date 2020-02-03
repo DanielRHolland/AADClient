@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ProductsService } from '../../services/products.service';
+import { ProductsService } from '../../services/products/products.service';
 import { AddProductModalComponent } from './add-product-modal/add-product-modal.component';
 import { EditProductModalComponent } from './edit-product-modal/edit-product-modal.component';
 import { DeleteProductModalComponent } from './delete-product-modal/delete-product-modal.component';
@@ -11,7 +11,7 @@ import { DeleteProductModalComponent } from './delete-product-modal/delete-produ
   styleUrls: ['./products-page.component.css']
 })
 
-export class ProductsPageComponent implements OnInit 
+export class ProductsPageComponent implements OnInit
 {
 
   products;
