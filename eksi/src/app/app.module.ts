@@ -7,7 +7,10 @@ import { CustomerHomeComponent } from './customer-pages/customer-home-page/home.
 import { StaffHomeComponent } from './staff-pages/staff-home-page/home.component';
 
 import { ProductsComponent } from './products/products.component';
-import { LoginPageComponent } from './login-page/login-page.component';
+import { CustomerLoginPageComponent } from './customer-login-page/customer-login-page.component';
+import { StaffLoginPageComponent } from './staff-login-page/staff-login-page.component';
+
+
 import { MyModalComponent } from './customer-pages/customer-home-page/my-modal/my-modal.component';
 import { ScanModalComponent } from './customer-pages/customer-home-page/scan-modal/scan-modal.component';
 import { ManualModalComponent } from './customer-pages/customer-home-page/manual-modal/manual-modal.component';
@@ -34,6 +37,7 @@ import { StaffService } from './services/staff/staff.service';
 
 import { ProductsPageComponent } from './staff-pages/products-page/products-page.component';
 import { TransactionPageComponent } from './staff-pages/transaction-page/transaction-page.component';
+import { StartingPageComponent } from './starting-page/starting-page.component';
 
 
 @NgModule({
@@ -42,7 +46,8 @@ import { TransactionPageComponent } from './staff-pages/transaction-page/transac
     CustomerHomeComponent,
     StaffHomeComponent,
     ProductsComponent,
-    LoginPageComponent,
+    CustomerLoginPageComponent,
+    StaffLoginPageComponent,
     CustomerPagesComponent,
     StaffPagesComponent,
     AccountInfoComponent,
@@ -57,7 +62,8 @@ import { TransactionPageComponent } from './staff-pages/transaction-page/transac
     EditProductModalComponent,
     DeleteProductModalComponent,
     EditTransactionModalComponent,
-    DeleteTransactionModalComponent
+    DeleteTransactionModalComponent,
+    StartingPageComponent
   ],
   imports: [
     BrowserModule,
