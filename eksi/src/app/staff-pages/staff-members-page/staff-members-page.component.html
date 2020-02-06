@@ -1,0 +1,37 @@
+<H1> Staff Members </H1>
+
+<p>
+  Here you can add, edit and view the records for the stores staff members.
+</p>
+
+<br>
+<br>
+<br>
+
+<!-- Table displaying staff members -->
+<div class="container-table">    
+  <table class="table table-bordered table-hover">
+	<div *ngIf="staff_members">
+    <tr>
+      <th>Staff ID</th>    
+      <th>Staff Member Name</th>
+	  </tr>
+    <tr *ngFor="let staff_member of staff_members">
+      <td>{{staff_member.id}}</td>   
+      <td>{{staff_member.name}}</td>    
+    </tr>  
+	</div>   
+  </table> 
+</div>
+
+<br>
+
+<div class="buttons">
+  <div class="container" div style="float:left;">
+    <button class="btn" (click)="openDialog_AddStaffMember()"> Add Staff Member </button>
+  </div>
+
+  <div class="container">
+    <button class="btn" (click)="openDialog_EditStaffMember()"> Edit Staff Member </button>
+  </div>
+</div>

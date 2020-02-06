@@ -1,3 +1,14 @@
+<h1>
+  Transactions Page
+</h1>
+
+<p>
+  Here you view all previous transactions as well being able to view, add, edit and delete them. 
+</p>
+
+<br>
+<br>
+
 <!-- Load icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -7,8 +18,10 @@
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
 
+<br>
+
 <!-- Table displaying products -->
-<div class="container">    
+<div class="container-table">    
   <table class="table table-bordered table-hover">
 	<div *ngIf="transactions">
     <tr>
@@ -29,19 +42,20 @@
   </table> 
 </div>
 
+<br>
+<br>
+<br>
+
 <div class="buttons">
   <div class="container" div style="float:left;">
-    <img src="assets/Images/placeholder.png" alt="Snow">
     <button class="btn" (click)="openDialog_AddTransaction()"> Add Transaction Log </button>
   </div>
 
-  <div class="container" div style="float:left;">
-    <img src="assets/Images/placeholder.png" alt="Snow">
+  <div class="container">
     <button class="btn" (click)="openDialog_EditTransaction()"> Edit Transaction Log </button>
   </div>
 
-  <div class="container" div style="float:left;">
-    <img src="assets/Images/placeholder.png" alt="Snow">
+  <div class="container" div style="float:right;">
     <button class="btn" (click)="openDialog_DeleteTransaction()"> Delete Transaction Log </button>
   </div>
 </div>
