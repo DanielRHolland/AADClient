@@ -18,7 +18,11 @@ export class TransactionsService {
   constructor(private httpClient: HttpClient, private connSettings: ConnectionSettingsService) { }
 
   public getTransactions() {
-    return this.httpClient.get(this.getOrigin() + '/l');
+    return this.httpClient.get<Transaction[]>(this.getOrigin() + '/l');
+  }
+
+  public getTransactionsBounded(startDate: number, endDate:number) {
+    return this.httpClient.get<Transaction[]>(this.getOrigin() + '/l/' + startDate + endDate);
   }
 
   public saveTransaction(transaction: Transaction) {

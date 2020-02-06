@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  };
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +23,9 @@ export class ConnectionSettingsService {
 
   getOrigin() {
     return this.origin.getValue();
+  }
+
+  getOptions() {
+    return httpOptions;
   }
 }
