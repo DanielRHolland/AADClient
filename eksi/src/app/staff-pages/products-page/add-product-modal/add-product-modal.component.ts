@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Product } from '../../../models/product.model';
+import { ProductsService } from '../../../services/products/products.service';
 
 @Component({
   selector: 'app-add-product-modal',
@@ -10,10 +11,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 export class AddProductModalComponent implements OnInit
 {
+  model = new Product('eg0', 'nom', 1, 'main stores', 1000, 120, 'example 0');
+
+
 
   constructor(public dialog: MatDialog,
-    public dialogRef: MatDialogRef<AddProductModalComponent>)
-  {
+              public dialogRef: MatDialogRef<AddProductModalComponent>,
+              private productsService: ProductsService) {
 
   }
 
@@ -25,5 +29,11 @@ export class AddProductModalComponent implements OnInit
   ngOnInit()
   {
 
+  }
+
+  postProduct() {
+    this.productsService.saveProduct(this.model).subscribe(
+    data => console.log('Success POSTing ' + data ),
+    error => console.error(error));
   }
 }

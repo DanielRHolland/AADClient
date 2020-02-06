@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ConnectionSettingsService {
   constructor() { }
 
-  private origin = new BehaviorSubject('http://localhost:3000');
+  private origin = new BehaviorSubject('http://159.65.81.247:8080');//'http://localhost:8080');
   observableOrigin = this.origin.asObservable();
 
   changeOrigin(origin: string) {

@@ -25,7 +25,7 @@ export class ProductsPageComponent implements OnInit
 
   update()
   {
-    this.productsService.getProducts().subscribe( data => this.products = data);
+    this.productsService.getProducts().subscribe( data => this.products = data );
   }
 
   openDialog_AddProduct()
