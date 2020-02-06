@@ -1,3 +1,13 @@
+<h1> Customer Home Page</h1>
+
+<p>
+  Please select one of the options below. 
+</p>
+
+<br>
+<br>
+<br>
+
 <div class="container">    
   <table class="table table-bordered table-hover">
 	<div *ngIf="products">
@@ -23,12 +33,10 @@
 
 <div class="buttons">
   <div class="container" div style="float:left;">
-    <img src="assets/Images/placeholder.png" alt="Snow">
     <button class="btn" (click)="openDialog_AddItem()"> Add Item </button>
   </div>
 
-  <div class="container" div style="float:left;">
-    <img src="assets/Images/placeholder.png" alt="Snow">
+  <div class="container" div style="float:right;">
     <button class="btn" (click)="openDialog_CheckoutItems()"> Check Out </button>
   </div>
 </div>

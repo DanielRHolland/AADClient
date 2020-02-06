@@ -10,6 +10,9 @@ import { ProductsComponent } from './products/products.component';
 import { CustomerLoginPageComponent } from './customer-login-page/customer-login-page.component';
 import { StaffLoginPageComponent } from './staff-login-page/staff-login-page.component';
 
+import {StaffMembersPageComponent } from './staff-pages/staff-members-page/staff-members-page.component';
+import {AddStaffMemberModalComponent } from './staff-pages/staff-members-page/add-staff-member-modal/add-staff-member-modal.component';
+import {EditStaffMemberModalComponent } from './staff-pages/staff-members-page/edit-staff-member-modal/edit-staff-member-modal.component';
 
 import { MyModalComponent } from './customer-pages/customer-home-page/my-modal/my-modal.component';
 import { ScanModalComponent } from './customer-pages/customer-home-page/scan-modal/scan-modal.component';
@@ -47,6 +50,7 @@ import { StartingPageComponent } from './starting-page/starting-page.component';
     StaffHomeComponent,
     ProductsComponent,
     CustomerLoginPageComponent,
+    StaffMembersPageComponent,
     StaffLoginPageComponent,
     CustomerPagesComponent,
     StaffPagesComponent,
@@ -56,6 +60,7 @@ import { StartingPageComponent } from './starting-page/starting-page.component';
     ScanModalComponent,
     ManualModalComponent,
     CheckoutModalComponent,
+    AddStaffMemberModalComponent,
     AddProductModalComponent,
     TransactionPageComponent,
     AddTransactionModalComponent,
@@ -63,7 +68,8 @@ import { StartingPageComponent } from './starting-page/starting-page.component';
     DeleteProductModalComponent,
     EditTransactionModalComponent,
     DeleteTransactionModalComponent,
-    StartingPageComponent
+    StartingPageComponent,
+    EditStaffMemberModalComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +93,9 @@ import { StartingPageComponent } from './starting-page/starting-page.component';
     EditProductModalComponent,
     DeleteProductModalComponent,
     EditTransactionModalComponent,
-    DeleteTransactionModalComponent ]
+    DeleteTransactionModalComponent,
+    AddStaffMemberModalComponent,
+    EditStaffMemberModalComponent ]
 })
 
 export class AppModule { }

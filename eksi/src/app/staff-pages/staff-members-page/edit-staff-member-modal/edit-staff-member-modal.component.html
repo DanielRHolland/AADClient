@@ -1,0 +1,28 @@
+<!--dialog box table code-->
+<h1 mat-dialog-title> Hello User </h1>
+
+<div mat-dialog-content>
+  <p>
+    Please fill in the new details for the staff member:
+  </p>
+
+  <form action="/action_page.php">
+    Image upload:   
+    <input type="button" value="Upload">
+    <br><br>
+
+    Employee ID:<br>
+    <input type="text" name="employeeid">
+    <br><br>
+
+    Employee Name:<br>
+    <input type="text" name="employeename">
+    <br><br>
+
+    <input type="submit" value="Save Record">
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close prompt</button>
+</div>

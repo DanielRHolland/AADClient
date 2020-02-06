@@ -8,6 +8,7 @@ import { AccountInfoComponent } from './account-info/account-info.component';
 import { ProductsPageComponent } from './staff-pages/products-page/products-page.component';
 import { TransactionPageComponent } from './staff-pages/transaction-page/transaction-page.component';
 import { StartingPageComponent } from './starting-page/starting-page.component';
+import {StaffMembersPageComponent } from './staff-pages/staff-members-page/staff-members-page.component';
 
 const routes: Routes = [
     { path: 'cushomepage', component: CustomerHomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'productspage', component: ProductsPageComponent },
     { path: 'transactionpage', component: TransactionPageComponent },
     { path: 'startingpage', component: StartingPageComponent },
+    { path: 'staffmemberspage', component: StaffMembersPageComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
