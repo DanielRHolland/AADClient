@@ -4,12 +4,6 @@ import { HttpHeaders } from '@angular/common/http';
 import { ConnectionSettingsService } from '../connection-settings/connection-settings.service'
 import { Transaction } from '../../models/transaction.model';
 
-const httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json'
-    })
-  };
-
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +20,7 @@ export class TransactionsService {
   }
 
   public saveTransaction(transaction: Transaction) {
-    return this.httpClient.post<Transaction>(this.getOrigin() + '/s', transaction, httpOptions);
+    return this.httpClient.post<Transaction>(this.getOrigin() + '/s', transaction, this.connSettings.getOptions());
   }
 
   private getOrigin() {
