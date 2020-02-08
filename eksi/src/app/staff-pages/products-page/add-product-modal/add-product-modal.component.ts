@@ -11,7 +11,7 @@ import { ProductsService } from '../../../services/products/products.service';
 
 export class AddProductModalComponent implements OnInit
 {
-  model = new Product('eg0', 'nom', 1, 'main stores', 1000, 120, 'example 0');
+  model: Product = new Product('eg0', 'nom', 1, 'main stores', 1000, 120, 'example 0');
 
 
 

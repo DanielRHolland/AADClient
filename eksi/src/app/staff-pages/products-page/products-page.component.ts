@@ -4,6 +4,7 @@ import { ProductsService } from '../../services/products/products.service';
 import { AddProductModalComponent } from './add-product-modal/add-product-modal.component';
 import { EditProductModalComponent } from './edit-product-modal/edit-product-modal.component';
 import { DeleteProductModalComponent } from './delete-product-modal/delete-product-modal.component';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-products-page',
@@ -30,13 +31,14 @@ export class ProductsPageComponent implements OnInit
 
   openDialog_AddProduct()
   {
-    const dialogRef = this.dialog.open(AddProductModalComponent,
-    {
-
-    });
+    const dialogRef = this.dialog.open(AddProductModalComponent);
 
     // Assigns users entered data to 'colour: string' once complete
-    dialogRef.afterClosed().subscribe();
+    dialogRef.afterClosed().subscribe( result => this.addProduct(result));
+  }
+
+  addProduct(product: Product) {
+    this.productsService.saveProduct(product).subscribe( data => console.log('Success'));
   }
 
   openDialog_EditProduct()

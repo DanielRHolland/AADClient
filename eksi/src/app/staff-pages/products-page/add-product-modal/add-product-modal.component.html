@@ -7,7 +7,7 @@
   </p>
 
   <form action="/action_page.php">
-    Image upload:   
+    Image upload:
     <input type="button" value="Upload">
     <br><br>
 
@@ -38,3 +38,15 @@
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close prompt</button>
 </div>
+
+
+
+<p>=================================</p>
+
+
+  <mat-form-field class="full-width-field">
+    <input matInput type="text" placeholder="Enter Product Id" name="id" required [(ngModel)]="model.id">
+  </mat-form-field>
+
+  <button mat-button [mat-dialog-close]="model" cdkFocusInitial>Save Record</button>
+
