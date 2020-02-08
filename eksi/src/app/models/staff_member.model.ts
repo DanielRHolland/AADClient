@@ -1,6 +1,6 @@
 export class StaffMember {
   constructor(
-    id: string,
-    password: string
+    public id: string,
+    public password: string
     ) {}
 }
