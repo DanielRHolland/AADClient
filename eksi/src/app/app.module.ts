@@ -7,8 +7,7 @@ import { CustomerHomeComponent } from './customer-pages/customer-home-page/home.
 import { StaffHomeComponent } from './staff-pages/staff-home-page/home.component';
 
 import { ProductsComponent } from './products/products.component';
-import { CustomerLoginPageComponent } from './customer-login-page/customer-login-page.component';
-import { StaffLoginPageComponent } from './staff-login-page/staff-login-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 import {StaffMembersPageComponent } from './staff-pages/staff-members-page/staff-members-page.component';
 import {AddStaffMemberModalComponent } from './staff-pages/staff-members-page/add-staff-member-modal/add-staff-member-modal.component';
@@ -49,9 +48,8 @@ import { StartingPageComponent } from './starting-page/starting-page.component';
     CustomerHomeComponent,
     StaffHomeComponent,
     ProductsComponent,
-    CustomerLoginPageComponent,
+    LoginPageComponent,
     StaffMembersPageComponent,
-    StaffLoginPageComponent,
     CustomerPagesComponent,
     StaffPagesComponent,
     AccountInfoComponent,
