@@ -29,9 +29,11 @@ export class ProductsPageComponent implements OnInit
     this.productsService.getProducts().subscribe( data => this.products = data );
   }
 
-  openDialog_AddProduct()
-  {
-    const dialogRef = this.dialog.open(AddProductModalComponent);
+  openDialog_AddProduct() {
+    const dialogRef = this.dialog.open(AddProductModalComponent,
+      {
+      data: {editMode: false}
+      });
 
     // Assigns users entered data to 'colour: string' once complete
     dialogRef.afterClosed().subscribe( result => this.addProduct(result));
@@ -43,9 +45,9 @@ export class ProductsPageComponent implements OnInit
 
   openDialog_EditProduct()
   {
-    const dialogRef = this.dialog.open(EditProductModalComponent,
+    const dialogRef = this.dialog.open(AddProductModalComponent,
     {
-
+      data : {editMode: true, product: this.products[0]}
     });
 
     // Assigns users entered data to 'colour: string' once complete

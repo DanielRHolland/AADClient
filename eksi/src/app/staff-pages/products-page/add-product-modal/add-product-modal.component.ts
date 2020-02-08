@@ -17,7 +17,8 @@ export class AddProductModalComponent implements OnInit
 
   constructor(public dialog: MatDialog,
               public dialogRef: MatDialogRef<AddProductModalComponent>,
-              private productsService: ProductsService) {
+              private productsService: ProductsService,
+             @Inject(MAT_DIALOG_DATA) public data: DialogData ) {
 
   }
 

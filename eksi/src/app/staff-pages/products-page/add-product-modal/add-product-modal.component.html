@@ -1,52 +1,40 @@
-<!--dialog box table code-->
-<h1 mat-dialog-title> Hello User </h1>
+<h1 mat-dialog-title>
+<div *ngIf="data.editMode; else elseBlock"> Edit Product</div>
+<ng-template #elseBlock></ng-template>
+</h1>
 
-<div mat-dialog-content>
-  <p>
-    Please fill in the below details:
-  </p>
+<mat-dialog-content>
+  <mat-form-field class="full-width-field">
+    <input matInput type="text" placeholder="Enter Product Id" name="id" [disabled]="data.editMode"  required [(ngModel)]="model.id">
+  </mat-form-field>
 
-  <form action="/action_page.php">
-    Image upload:
-    <input type="button" value="Upload">
-    <br><br>
+  <mat-form-field class="full-width-field">
+    <input matInput type="text" placeholder="Enter Product Name" name="name" required [(ngModel)]="model.name">
+  </mat-form-field>
 
-    Name:<br>
-    <input type="text" name="productname">
-    <br><br>
+  <mat-form-field class="full-width-field">
+    <input matInput type="number" placeholder="Enter Stock Level" name="quantity" required [(ngModel)]="model.quantity">
+  </mat-form-field>
 
-    Product Code:<br>
-    <input type="text" name="productcode">
-    <br><br>
+  <mat-form-field class="full-width-field">
+    <input matInput type="text" placeholder="Stock Location" name="locationName" required [(ngModel)]="model.locationName">
+  </mat-form-field>
 
-    Product Code:<br>
-    <input type="number" name="productcode">
-    <br><br>
+  <mat-form-field class="full-width-field">
+    <input matInput type="datetime" placeholder="Expiry Date" name="expiryDate" required [(ngModel)]="model.expiryDate">
+  </mat-form-field>
 
-    Current Stock:<br>
-    <input type="number" name="currentstock">
-    <br><br>
+  <mat-form-field class="full-width-field">
+    <input matInput type="number" placeholder="Cost Price" name="costPrice" required [(ngModel)]="model.costPrice">
+  </mat-form-field>
 
-    Basic Description:<br>
-    <input type="text" name="basicdescription">
-    <br><br>
+  <mat-form-field class="full-width-field">
+    <input matInput type="number" placeholder="Description" name="description" required [(ngModel)]="model.description">
+  </mat-form-field>
 
-    <input type="submit" value="Save Record">
-  </form>
-</div>
+  <button mat-button [mat-dialog-close]="model" cdkFocusInitial>Save Record</button>
+</mat-dialog-content>
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close prompt</button>
 </div>
-
-
-
-<p>=================================</p>
-
-
-  <mat-form-field class="full-width-field">
-    <input matInput type="text" placeholder="Enter Product Id" name="id" required [(ngModel)]="model.id">
-  </mat-form-field>
-
-  <button mat-button [mat-dialog-close]="model" cdkFocusInitial>Save Record</button>
-
