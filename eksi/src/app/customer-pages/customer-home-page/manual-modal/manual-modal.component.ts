@@ -10,13 +10,14 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 export class ManualModalComponent implements OnInit
 {
 
+  productId: string;
+
   constructor(public dialogRef: MatDialogRef<ManualModalComponent>)
   {
 
   }
 
-  onNoClick(): void
-  {
+  onNoClick() {
     this.dialogRef.close(); // Closes the dialog box
   }
 

@@ -1,16 +1,14 @@
 <!--dialog box table code-->
 <div mat-dialog-content>
-  <form action="/action_page.php">
-    Please enter your given budget code:<br>
-    <br>
-    <input type="integer" name="Budget Code">
-    <br>
-    <br>
-    <input type="submit" value="Submit">
-    <br>
+  <form (ngSubmit)="onSubmit()" >
+    <mat-form-field class="full-width-field">
+      <label for="budgetCode">Budget Code:</label>
+      <input matInput type="text" class="form-control" id="userId" required [(ngModel)]="budgetCode" name="budgetCode">
+    </mat-form-field>
+    <button mat-button type="submit" class="btn btn-success">Confirm Checkout</button>
   </form>
 </div>
 
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()"> Close prompt </button>
+  <button mat-button (click)="onNoClick()"> Cancel </button>
 </div>

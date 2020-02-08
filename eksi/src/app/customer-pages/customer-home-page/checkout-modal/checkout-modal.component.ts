@@ -9,14 +9,16 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 export class CheckoutModalComponent implements OnInit
 {
-
+  budgetCode;
   constructor(public dialogRef: MatDialogRef<CheckoutModalComponent>)
   {
 
   }
+  onSubmit() {
 
-  onNoClick(): void
-  {
+  }
+
+  onNoClick() {
     this.dialogRef.close(); // Closes the dialog box
   }
 

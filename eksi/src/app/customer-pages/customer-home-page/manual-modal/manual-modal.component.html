@@ -1,16 +1,9 @@
-<!--dialog box table code-->
 <div mat-dialog-content>
-  <form action="/action_page.php">
-    Please enter an product ID:<br>
-    <br>
-    <input type="integer" name="Product_ID">
-    <br>
-    <br>
-    <input type="submit" value="Submit">
-    <br>
+  <form (ngSubmit)="onSubmit()">
+    <mat-form-field class="full-width-field">
+      <input matInput type="integer" placeholder="Enter Product ID" name="pid" required [(ngModel)]="productId">
+    </mat-form-field>
+    <button mat-button type="submit" class="btn btn-success">Submit</button>
   </form>
-</div>
-
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()"> Close prompt </button>
+  <button mat-button type="button" (click)="onNoClick()">Cancel</button>
 </div>
