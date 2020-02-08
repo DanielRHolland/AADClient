@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-delete-product-modal',
@@ -10,8 +9,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 export class DeleteProductModalComponent implements OnInit
 {
+  product;
   constructor(public dialog: MatDialog,
-    public dialogRef: MatDialogRef<DeleteProductModalComponent>)
+    public dialogRef: MatDialogRef<DeleteProductModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData )
   {
 
   }
@@ -23,6 +24,6 @@ export class DeleteProductModalComponent implements OnInit
 
   ngOnInit()
   {
-
+    this.product = this.data.product;
   }
 }

@@ -1,11 +1,11 @@
 <h1 mat-dialog-title>
-<div *ngIf="data.editMode; else elseBlock"> Edit Product</div>
+<div *ngIf="editMode; else elseBlock"> Edit Product</div>
 <ng-template #elseBlock></ng-template>
 </h1>
 
 <mat-dialog-content>
   <mat-form-field class="full-width-field">
-    <input matInput type="text" placeholder="Enter Product Id" name="id" [disabled]="data.editMode"  required [(ngModel)]="model.id">
+    <input matInput type="text" placeholder="Enter Product Id" name="id" [disabled]="editMode"  required [(ngModel)]="model.id">
   </mat-form-field>
 
   <mat-form-field class="full-width-field">

@@ -14,7 +14,9 @@ import { Product } from '../../models/product.model';
 
 export class ProductsPageComponent implements OnInit
 {
-  displayedColumns = ['id','name','quantity','locationName','expiryDate','costPrice','description'];
+  displayedColumns = ['id', 'name', 'quantity',
+   'locationName', 'expiryDate',
+    'costPrice', 'description', 'editButton', 'deleteButton'];
   products;
 
   constructor(private productsService: ProductsService, public dialog: MatDialog) { }
@@ -30,39 +32,36 @@ export class ProductsPageComponent implements OnInit
   }
 
   openDialog_AddProduct() {
-    const dialogRef = this.dialog.open(AddProductModalComponent,
-      {
-      data: {editMode: false}
-      });
-
-    // Assigns users entered data to 'colour: string' once complete
-    dialogRef.afterClosed().subscribe( result => this.addProduct(result));
+    this.launchProductDialog();
   }
 
   addProduct(product: Product) {
     this.productsService.saveProduct(product).subscribe( data => console.log('Success'));
   }
 
-  openDialog_EditProduct()
-  {
-    const dialogRef = this.dialog.open(AddProductModalComponent,
-    {
-      data : {editMode: true, product: this.products[0]}
-    });
-
-    // Assigns users entered data to 'colour: string' once complete
-    dialogRef.afterClosed().subscribe();
+  launchProductDialog(item: Product = null) {
+     const dialogRef = this.dialog.open(AddProductModalComponent,
+      {
+      data: {product: item}
+      });
+    dialogRef.afterClosed().subscribe( result => this.addProduct(result));
   }
 
-  openDialog_DeleteProduct()
+  openDialog_EditProduct(product: Product) {
+    this.launchProductDialog(product);
+  }
+
+  openDialog_DeleteProduct(item: Product)
   {
     const dialogRef = this.dialog.open(DeleteProductModalComponent,
     {
-
+      data : {product: item}
     });
 
-    // Assigns users entered data to 'colour: string' once complete
-    dialogRef.afterClosed().subscribe();
+    dialogRef.afterClosed().subscribe(id => this.deleteProduct(id));
+  }
+  deleteProduct(id:string) {
+    this.productsService.deleteProduct(id).subscribe(data => console.log(data));
   }
 
   search() {

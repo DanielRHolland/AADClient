@@ -11,9 +11,9 @@ import { ProductsService } from '../../../services/products/products.service';
 
 export class AddProductModalComponent implements OnInit
 {
-  model: Product = new Product('eg0', 'nom', 1, 'main stores', 1000, 120, 'example 0');
+  model: Product = new Product ('', '', 0, '', 0, 0, '');
 
-
+  editMode = false;
 
   constructor(public dialog: MatDialog,
               public dialogRef: MatDialogRef<AddProductModalComponent>,
@@ -22,19 +22,14 @@ export class AddProductModalComponent implements OnInit
 
   }
 
-  onNoClick(): void
-  {
+  onNoClick(): void {
     this.dialogRef.close(); // Closes the dialog box
   }
 
-  ngOnInit()
-  {
-
-  }
-
-  postProduct() {
-    this.productsService.saveProduct(this.model).subscribe(
-    data => console.log('Success POSTing ' + data ),
-    error => console.error(error));
+  ngOnInit() {
+    if (this.data.product != null) {
+      this.model = this.data.product;
+      this.editMode = true;
+    }
   }
 }
