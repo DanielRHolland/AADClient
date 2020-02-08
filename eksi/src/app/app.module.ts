@@ -6,7 +6,6 @@ import { appRoutingModule } from './app.routing';
 import { CustomerHomeComponent } from './customer-pages/customer-home-page/home.component';
 import { StaffHomeComponent } from './staff-pages/staff-home-page/home.component';
 
-import { ProductsComponent } from './products/products.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 
 import {StaffMembersPageComponent } from './staff-pages/staff-members-page/staff-members-page.component';
@@ -19,8 +18,6 @@ import { ManualModalComponent } from './customer-pages/customer-home-page/manual
 import { CheckoutModalComponent } from './customer-pages/customer-home-page/checkout-modal/checkout-modal.component';
 
 import { DemoMaterialModule } from './material-module';
-import { CustomerPagesComponent } from './customer-pages/customer-pages.component';
-import { StaffPagesComponent } from './staff-pages/staff-pages.component';
 import { AddProductModalComponent } from './staff-pages/products-page/add-product-modal/add-product-modal.component';
 import { EditProductModalComponent } from './staff-pages/products-page/edit-product-modal/edit-product-modal.component';
 import { AddTransactionModalComponent } from './staff-pages/transaction-page/add-transaction-modal/add-transaction-modal.component';
@@ -47,11 +44,8 @@ import { StartingPageComponent } from './starting-page/starting-page.component';
     AppComponent,
     CustomerHomeComponent,
     StaffHomeComponent,
-    ProductsComponent,
     LoginPageComponent,
     StaffMembersPageComponent,
-    CustomerPagesComponent,
-    StaffPagesComponent,
     AccountInfoComponent,
     ProductsPageComponent,
     MyModalComponent,

@@ -12,32 +12,6 @@
 
 <br>
 
-<!-- Table displaying products
-<div class="container-table">
-  <table class="table table-bordered table-hover">
-	<div *ngIf="products">
-    <tr>
-      <th>Product ID</th>
-      <th>Product Name</th>
-      <th>Product Quantity</th>
-      <th>Location Name</th>
-      <th>Expiry Date</th>
-      <th>Cost Price</th>
-      <th>Product Description</th>
-	  </tr>
-    <tr *ngFor="let product of products">
-      <td>{{product.id}}</td>
-      <td>{{product.name}}</td>
-      <td>{{product.quantity}}</td>
-      <td>{{product.locationName}}</td>
-      <td>{{product.expiryDate}}</td>
-      <td>{{product.costPrice}}</td>
-      <td>{{product.description}}</td>
-    </tr>
-	</div>
-  </table>
-</div>-->
-
 <table mat-table [dataSource]="products">
 
   <ng-container matColumnDef="id">
