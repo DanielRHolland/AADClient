@@ -2,65 +2,98 @@
   Products Page
 </h1>
 
-<p>
-  Here you view all existing products as well being able to view, add, edit and delete them. 
-</p>
-
 <br>
 <br>
-
-<!-- Load icon library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <!-- The form -->
-<form class="example" action="action_page.php">
+<form class="example" action="search()">
   <input type="text" placeholder="Search a product code..." name="search">
   <button type="submit"><i class="fa fa-search"></i></button>
 </form>
 
 <br>
 
-<!-- Table displaying products -->
-<div class="container-table">    
+<!-- Table displaying products
+<div class="container-table">
   <table class="table table-bordered table-hover">
 	<div *ngIf="products">
     <tr>
-      <th>Product ID</th>    
+      <th>Product ID</th>
       <th>Product Name</th>
       <th>Product Quantity</th>
-      <th>Location Name</th>    
-      <th>Expiry Date</th>    
+      <th>Location Name</th>
+      <th>Expiry Date</th>
       <th>Cost Price</th>
       <th>Product Description</th>
 	  </tr>
     <tr *ngFor="let product of products">
-      <td>{{product.id}}</td>   
-      <td>{{product.name}}</td>    
-      <td>{{product.quantity}}</td>    
-      <td>{{product.locationName}}</td>    
-      <td>{{product.expiryDate}}</td> 
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.quantity}}</td>
+      <td>{{product.locationName}}</td>
+      <td>{{product.expiryDate}}</td>
       <td>{{product.costPrice}}</td>
       <td>{{product.description}}</td>
-    </tr>  
-	</div>   
-  </table> 
-</div>
+    </tr>
+	</div>
+  </table>
+</div>-->
+
+<table mat-table [dataSource]="products">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let product"> {{product.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let product"> {{product.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef> Quantity </th>
+    <td mat-cell *matCellDef="let product"> {{product.quantity}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="locationName">
+    <th mat-header-cell *matHeaderCellDef> Location </th>
+    <td mat-cell *matCellDef="let product"> {{product.locationName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="expiryDate">
+    <th mat-header-cell *matHeaderCellDef> Expiry </th>
+    <td mat-cell *matCellDef="let product"> {{product.expiryDate}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="costPrice">
+    <th mat-header-cell *matHeaderCellDef> Cost </th>
+    <td mat-cell *matCellDef="let product"> {{product.costPrice}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let product"> {{product.description}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
 
 <br>
 <br>
 
 <div class="buttons">
   <div class="container" div style="float:left;">
-    <button class="btn" (click)="openDialog_AddProduct()"> Add Product </button>
+    <button mat-button class="btn" (click)="openDialog_AddProduct()"> Add Product </button>
   </div>
 
   <div class="container" >
-    <button class="btn" (click)="openDialog_EditProduct()"> Edit Product </button>
+    <button mat-button class="btn" (click)="openDialog_EditProduct()"> Edit Product </button>
   </div>
 
   <br>
 
   <div class="container" div style="float:right;">
-    <button class="btn" (click)="openDialog_DeleteProduct()"> Delete Product </button>
+    <button mat-button class="btn" (click)="openDialog_DeleteProduct()"> Delete Product </button>
   </div>
 </div>

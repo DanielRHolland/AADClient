@@ -13,7 +13,7 @@ import { DeleteProductModalComponent } from './delete-product-modal/delete-produ
 
 export class ProductsPageComponent implements OnInit
 {
-
+  displayedColumns = ['id','name','quantity','locationName','expiryDate','costPrice','description'];
   products;
 
   constructor(private productsService: ProductsService, public dialog: MatDialog) { }
@@ -61,4 +61,7 @@ export class ProductsPageComponent implements OnInit
     dialogRef.afterClosed().subscribe();
   }
 
+  search() {
+
+  }
 }
