@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ProductsService } from '../../services/products/products.service';
 import { AddProductModalComponent } from './add-product-modal/add-product-modal.component';
-import { EditProductModalComponent } from './edit-product-modal/edit-product-modal.component';
 import { DeleteProductModalComponent } from './delete-product-modal/delete-product-modal.component';
 import { Product } from '../../models/product.model';
 
@@ -36,15 +35,18 @@ export class ProductsPageComponent implements OnInit
   }
 
   addProduct(product: Product) {
-    this.productsService.saveProduct(product).subscribe( data => console.log('Success'));
+    this.productsService.saveProduct(product).subscribe( data => {
+      console.log('Success');
+      this.products.push(product);
+    });
   }
 
   launchProductDialog(item: Product = null) {
      const dialogRef = this.dialog.open(AddProductModalComponent,
       {
-      data: {product: item}
+      data: item
       });
-    dialogRef.afterClosed().subscribe( result => this.addProduct(result));
+     dialogRef.afterClosed().subscribe( result => this.addProduct(result));
   }
 
   openDialog_EditProduct(product: Product) {
@@ -55,12 +57,12 @@ export class ProductsPageComponent implements OnInit
   {
     const dialogRef = this.dialog.open(DeleteProductModalComponent,
     {
-      data : {product: item}
+      data : item
     });
 
     dialogRef.afterClosed().subscribe(id => this.deleteProduct(id));
   }
-  deleteProduct(id:string) {
+  deleteProduct(id: string) {
     this.productsService.deleteProduct(id).subscribe(data => console.log(data));
   }
 

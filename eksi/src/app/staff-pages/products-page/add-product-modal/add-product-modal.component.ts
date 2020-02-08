@@ -18,7 +18,7 @@ export class AddProductModalComponent implements OnInit
   constructor(public dialog: MatDialog,
               public dialogRef: MatDialogRef<AddProductModalComponent>,
               private productsService: ProductsService,
-             @Inject(MAT_DIALOG_DATA) public data: DialogData ) {
+             @Inject(MAT_DIALOG_DATA) public product: Product ) {
 
   }
 
@@ -27,8 +27,8 @@ export class AddProductModalComponent implements OnInit
   }
 
   ngOnInit() {
-    if (this.data.product != null) {
-      this.model = this.data.product;
+    if (this.product != null) {
+      this.model = this.product;
       this.editMode = true;
     }
   }

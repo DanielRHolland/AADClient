@@ -7,8 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   styleUrls: ['./manual-modal.component.css']
 })
 
-export class ManualModalComponent implements OnInit
-{
+export class ManualModalComponent implements OnInit {
 
   productId: string;
 

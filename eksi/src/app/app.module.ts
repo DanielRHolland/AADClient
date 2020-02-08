@@ -19,7 +19,6 @@ import { CheckoutModalComponent } from './customer-pages/customer-home-page/chec
 
 import { DemoMaterialModule } from './material-module';
 import { AddProductModalComponent } from './staff-pages/products-page/add-product-modal/add-product-modal.component';
-import { EditProductModalComponent } from './staff-pages/products-page/edit-product-modal/edit-product-modal.component';
 import { AddTransactionModalComponent } from './staff-pages/transaction-page/add-transaction-modal/add-transaction-modal.component';
 import { EditTransactionModalComponent } from './staff-pages/transaction-page/edit-transaction-modal/edit-transaction-modal.component';
 import { DeleteTransactionModalComponent } from './staff-pages/transaction-page/delete-transaction-modal/delete-transaction-modal.component';
@@ -56,7 +55,6 @@ import { StartingPageComponent } from './starting-page/starting-page.component';
     AddProductModalComponent,
     TransactionPageComponent,
     AddTransactionModalComponent,
-    EditProductModalComponent,
     DeleteProductModalComponent,
     EditTransactionModalComponent,
     DeleteTransactionModalComponent,
@@ -82,7 +80,6 @@ import { StartingPageComponent } from './starting-page/starting-page.component';
     CheckoutModalComponent,
     AddProductModalComponent,
     AddTransactionModalComponent,
-    EditProductModalComponent,
     DeleteProductModalComponent,
     EditTransactionModalComponent,
     DeleteTransactionModalComponent,

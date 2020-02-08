@@ -2,10 +2,10 @@ import { TransactionEntry } from './transaction-entry.model';
 
 export class Transaction {
   constructor(
-    transactionId: string,
-    nNumber: string,
-    budgetCode: string,
-    timeStamp: number,
-    items: TransactionEntry[]
+    public transactionId: string,
+    public nNumber: string,
+    public budgetCode: string,
+    public timeStamp: number,
+    public items: TransactionEntry[]
   ) {}
 }
