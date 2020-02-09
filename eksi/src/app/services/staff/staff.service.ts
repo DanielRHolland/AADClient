@@ -13,23 +13,23 @@ export class StaffService {
     private httpClient: HttpClient,
     private connSettings: ConnectionSettingsService) { }
 
-    private getStaffMember(id: string) {
-      this.httpClient.get<StaffMember>(this.getOrigin() + '/g/' + id);
+    public getStaffMember(id: string) {
+     return this.httpClient.get<StaffMember>(this.getOrigin() + '/g/' + id);
     }
 
-    private getStaffList() {
-      this.httpClient.get<StaffMember[]>(this.getOrigin() + '/l');
+    public getStaffList() {
+     return this.httpClient.get<StaffMember[]>(this.getOrigin() + '/l');
     }
 
-    private saveStaffMember(staffMember: StaffMember) {
-      this.httpClient.post<StaffMember>(this.getOrigin() + '/s', staffMember, this.connSettings.getOptions());
+    public saveStaffMember(staffMember: StaffMember) {
+     return this.httpClient.post<StaffMember>(this.getOrigin() + '/s', staffMember, this.connSettings.getOptions());
     }
 
-    private deleteStaffMember(id: string) {
-      this.httpClient.delete(this.getOrigin() + '/d/' + id);
+    public deleteStaffMember(id: string) {
+      return this.httpClient.delete(this.getOrigin() + '/d/' + id);
     }
 
-    getOrigin() {
+    private getOrigin() {
       return this.connSettings.getOrigin() + '/staff';
     }
 }

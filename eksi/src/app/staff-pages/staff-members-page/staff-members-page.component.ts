@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ProductsService } from '../../services/products/products.service';
+import { StaffService } from '../../services/staff/staff.service';
 import { AddStaffMemberModalComponent } from './add-staff-member-modal/add-staff-member-modal.component';
 import { EditStaffMemberModalComponent } from './edit-staff-member-modal/edit-staff-member-modal.component';
+import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-staff-members-page',
@@ -10,38 +11,45 @@ import { EditStaffMemberModalComponent } from './edit-staff-member-modal/edit-st
   styleUrls: ['./staff-members-page.component.css']
 })
 
-export class StaffMembersPageComponent implements OnInit
-{
+export class StaffMembersPageComponent implements OnInit {
+  displayedColumns = ['id', 'editButton', 'deleteButton'];
+  staffMembers;
 
-  staff_members;
+  constructor(public dialog: MatDialog, private staffService: StaffService) { }
 
-  constructor(public dialog: MatDialog) { }
-
-  ngOnInit()
-  {
-
+  ngOnInit() {
+    this.staffMembers = ['A', 'B', 'C']; //placeholder
   }
 
-  openDialog_AddStaffMember()
-  {
+  openDialog_AddStaffMember() {
     const dialogRef = this.dialog.open(AddStaffMemberModalComponent,
     {
 
     });
-
-    // Assigns users entered data to 'colour: string' once complete
     dialogRef.afterClosed().subscribe();
   }
 
-  openDialog_EditStaffMember()
-  {
+  openDialog_EditStaffMember() {
     const dialogRef = this.dialog.open(EditStaffMemberModalComponent,
     {
 
     });
-
-    // Assigns users entered data to 'colour: string' once complete
     dialogRef.afterClosed().subscribe();
+  }
+
+  openDialog_DeleteStaffMember(member: string) {
+    const msg = 'Are you sure that you want to delete staff member "' + member + '"?';
+    const dialogRef = this.dialog.open(ConfirmDialogComponent,
+    {
+      data: msg
+    });
+
+    dialogRef.afterClosed().subscribe(deleteMember => {
+     if (deleteMember) {
+       console.log('Deleting Member ' + member + '...');
+       this.staffService.deleteStaffMember(member).subscribe(data => console.log(data));
+     }
+    });
   }
 
 }
