@@ -8,7 +8,7 @@ import { AuthoService } from '../../services/autho/autho.service';
 import { v4 as uuid } from 'uuid';
 import { TransactionEntry } from '../../models/transaction-entry.model';
 import { ManualModalComponent } from './manual-modal/manual-modal.component';
-
+import { TransactionsService } from '../../services/transactions/transactions.service';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +21,8 @@ export class CustomerHomeComponent implements OnInit {
   displayedColumns = ['productId', 'quantity', 'infoButton', 'deleteButton'];
 
   constructor(public dialog: MatDialog, private httpClient: HttpClient,
-              private authoService: AuthoService) { }
+              private authoService: AuthoService,
+              private transactionsService: TransactionsService) { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<TransactionEntry>(new Array<TransactionEntry>());
@@ -36,9 +37,11 @@ export class CustomerHomeComponent implements OnInit {
   }
 
   addToList(productId: string) {
-    const entry = new TransactionEntry(uuid(), productId, 1);
-    this.dataSource.data.push(entry);
-    this.dataSource.filter = ''; // forces table refresh
+    if (productId && productId !== '') {
+      const entry = new TransactionEntry(uuid(), productId, 1);
+      this.dataSource.data.push(entry);
+      this.dataSource.filter = ''; // forces table refresh
+    }
   }
 
   openDialog_CheckoutItems() {
@@ -47,7 +50,14 @@ export class CustomerHomeComponent implements OnInit {
 
     });
 
-    dialogRef.afterClosed().subscribe();
+    dialogRef.afterClosed().subscribe(budgetCode => this.checkout(budgetCode));
+  }
+
+  checkout(budgetCode: string) {
+    const transaction = new Transaction(uuid(), this.authoService.getNNumber(),
+    budgetCode, Math.floor(Date.now() / 1000), this.dataSource.data);
+    this.transactionsService.saveTransaction(transaction).subscribe(
+      data => console.log('Success!'));
   }
 
   deleteEntry(entry: TransactionEntry) {

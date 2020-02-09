@@ -3,9 +3,9 @@
   <form (ngSubmit)="onSubmit()" >
     <mat-form-field class="full-width-field">
       <label for="budgetCode">Budget Code:</label>
-      <input matInput type="text" class="form-control" id="userId" required [(ngModel)]="budgetCode" name="budgetCode">
+      <input matInput type="text" class="form-control" id="budgetCode" required [(ngModel)]="budgetCode" name="budgetCode">
     </mat-form-field>
-    <button mat-button type="submit" class="btn btn-success">Confirm Checkout</button>
+    <button mat-button type="submit" [mat-dialog-close]="budgetCode" class="btn btn-success">Confirm Checkout</button>
   </form>
 </div>
 

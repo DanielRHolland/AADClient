@@ -9,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 export class CheckoutModalComponent implements OnInit
 {
-  budgetCode;
+  budgetCode: string;
   constructor(public dialogRef: MatDialogRef<CheckoutModalComponent>)
   {
 
