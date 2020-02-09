@@ -1,0 +1,6 @@
+<form (ngSubmit)="query.emit(searchterm)">
+<mat-form-field style="width: 80%;">
+  <input matInput type="text" placeholder="Search" name="search" [(ngModel)]="searchterm">
+</mat-form-field>
+  <button mat-button type="submit">→</button>
+</form>
