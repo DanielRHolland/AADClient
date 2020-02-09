@@ -55,8 +55,7 @@ export class ProductsPageComponent implements OnInit
     this.launchProductDialog(product);
   }
 
-  openDialog_DeleteProduct(item: Product)
-  {
+  openDialog_DeleteProduct(item: Product) {
     const dialogRef = this.dialog.open(DeleteProductModalComponent,
     {
       data : item
@@ -65,10 +64,12 @@ export class ProductsPageComponent implements OnInit
     dialogRef.afterClosed().subscribe(id => this.deleteProduct(id));
   }
   deleteProduct(id: string) {
-    this.productsService.deleteProduct(id).subscribe(data => console.log(data));
+    if (id) {
+      this.productsService.deleteProduct(id).subscribe(data => console.log(data));
+    }
   }
 
-  search() {
-
+  search(query: string) {
+    console.log(query);
   }
 }

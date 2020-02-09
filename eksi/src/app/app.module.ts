@@ -36,6 +36,7 @@ import { TransactionPageComponent } from './staff-pages/transaction-page/transac
 import { StartingPageComponent } from './starting-page/starting-page.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { BarcodeReaderComponent } from './barcode-reader/barcode-reader.component';
+import { SearchboxComponent } from './searchbox/searchbox.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { BarcodeReaderComponent } from './barcode-reader/barcode-reader.componen
     StartingPageComponent,
     EditStaffMemberModalComponent,
     ToolbarComponent,
-    BarcodeReaderComponent
+    BarcodeReaderComponent,
+    SearchboxComponent
   ],
   imports: [
     BrowserModule,
