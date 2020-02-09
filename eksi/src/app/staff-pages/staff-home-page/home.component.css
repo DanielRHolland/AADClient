@@ -1,0 +1,19 @@
+.container {
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  color: white;
+  float: left;
+}
+
+.text {
+  position: absolute;
+  /* top: 90%; */
+  bottom: 8px;
+  left: 50%;
+  transform: translate(-50%, 140%);
+}
+
+@media (min-width:500px) {
+  .container { width: 30%; }
+}
