@@ -36,6 +36,7 @@ import { StaffService } from './services/staff/staff.service';
 import { ProductsPageComponent } from './staff-pages/products-page/products-page.component';
 import { TransactionPageComponent } from './staff-pages/transaction-page/transaction-page.component';
 import { StartingPageComponent } from './starting-page/starting-page.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { StartingPageComponent } from './starting-page/starting-page.component';
     EditTransactionModalComponent,
     DeleteTransactionModalComponent,
     StartingPageComponent,
-    EditStaffMemberModalComponent
+    EditStaffMemberModalComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
