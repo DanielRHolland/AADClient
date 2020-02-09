@@ -7,11 +7,11 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   styleUrls: ['./scan-modal.component.css']
 })
 
-export class ScanModalComponent implements OnInit 
+export class ScanModalComponent implements OnInit
 {
 
   constructor(public dialogRef: MatDialogRef<ScanModalComponent>)
-  { 
+  {
 
   }
 

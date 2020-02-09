@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MyModalComponent } from './my-modal.component';
+import { BarcodeReaderComponent } from './barcode-reader.component';
 
-describe('MyModalComponent', () => {
-  let component: MyModalComponent;
-  let fixture: ComponentFixture<MyModalComponent>;
+describe('BarcodeReaderComponent', () => {
+  let component: BarcodeReaderComponent;
+  let fixture: ComponentFixture<BarcodeReaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MyModalComponent ]
+      declarations: [ BarcodeReaderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MyModalComponent);
+    fixture = TestBed.createComponent(BarcodeReaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

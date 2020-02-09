@@ -11,8 +11,6 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import {StaffMembersPageComponent } from './staff-pages/staff-members-page/staff-members-page.component';
 import {AddStaffMemberModalComponent } from './staff-pages/staff-members-page/add-staff-member-modal/add-staff-member-modal.component';
 import {EditStaffMemberModalComponent } from './staff-pages/staff-members-page/edit-staff-member-modal/edit-staff-member-modal.component';
-
-import { MyModalComponent } from './customer-pages/customer-home-page/my-modal/my-modal.component';
 import { ScanModalComponent } from './customer-pages/customer-home-page/scan-modal/scan-modal.component';
 import { ManualModalComponent } from './customer-pages/customer-home-page/manual-modal/manual-modal.component';
 import { CheckoutModalComponent } from './customer-pages/customer-home-page/checkout-modal/checkout-modal.component';
@@ -37,6 +35,7 @@ import { ProductsPageComponent } from './staff-pages/products-page/products-page
 import { TransactionPageComponent } from './staff-pages/transaction-page/transaction-page.component';
 import { StartingPageComponent } from './starting-page/starting-page.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { BarcodeReaderComponent } from './barcode-reader/barcode-reader.component';
 
 
 @NgModule({
@@ -48,7 +47,6 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     StaffMembersPageComponent,
     AccountInfoComponent,
     ProductsPageComponent,
-    MyModalComponent,
     ScanModalComponent,
     ManualModalComponent,
     CheckoutModalComponent,
@@ -61,7 +59,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     DeleteTransactionModalComponent,
     StartingPageComponent,
     EditStaffMemberModalComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    BarcodeReaderComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +75,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
      AuthoService,
     StaffService ],
   bootstrap: [ AppComponent ],
-  entryComponents: [ MyModalComponent,
+  entryComponents: [
     ScanModalComponent,
     ManualModalComponent,
     CheckoutModalComponent,

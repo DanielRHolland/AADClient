@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { MyModalComponent } from './my-modal/my-modal.component';
 import { CheckoutModalComponent } from './checkout-modal/checkout-modal.component';
 import { Transaction } from '../../models/transaction.model';
 import { AuthoService } from '../../services/autho/autho.service';
@@ -9,6 +8,7 @@ import { v4 as uuid } from 'uuid';
 import { TransactionEntry } from '../../models/transaction-entry.model';
 import { ManualModalComponent } from './manual-modal/manual-modal.component';
 import { TransactionsService } from '../../services/transactions/transactions.service';
+import { ScanModalComponent } from './scan-modal/scan-modal.component';
 
 @Component({
   selector: 'app-home',
@@ -29,10 +29,7 @@ export class CustomerHomeComponent implements OnInit {
   }
 
   openDialog_AddItem()  {
-    const dialogRef = this.dialog.open(ManualModalComponent,
-    {
-
-    });
+    const dialogRef = this.dialog.open(ManualModalComponent);
     dialogRef.afterClosed().subscribe(id => this.addToList(id));
   }
 
@@ -45,11 +42,7 @@ export class CustomerHomeComponent implements OnInit {
   }
 
   openDialog_CheckoutItems() {
-    const dialogRef = this.dialog.open(CheckoutModalComponent,
-    {
-
-    });
-
+    const dialogRef = this.dialog.open(CheckoutModalComponent);
     dialogRef.afterClosed().subscribe(budgetCode => this.checkout(budgetCode));
   }
 
@@ -58,6 +51,11 @@ export class CustomerHomeComponent implements OnInit {
     budgetCode, Math.floor(Date.now() / 1000), this.dataSource.data);
     this.transactionsService.saveTransaction(transaction).subscribe(
       data => console.log('Success!'));
+  }
+
+  openDialog_ScanItem() {
+    const dialogRef = this.dialog.open(ScanModalComponent);
+    dialogRef.afterClosed().subscribe(id => this.addToList(id));
   }
 
   deleteEntry(entry: TransactionEntry) {

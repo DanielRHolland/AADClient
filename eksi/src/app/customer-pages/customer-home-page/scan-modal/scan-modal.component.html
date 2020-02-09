@@ -1,10 +1,6 @@
 <!--dialog box table code-->
 <div mat-dialog-content>
-  <p>
-    Please scan the barcode of the item you wish to purchase
-  </p>
-
-  <img src="/assets/Gifs/loading.gif" />
+   <app-barcode-reader (codeOutput)="dialogRef.close($event)"></app-barcode-reader>
 </div>
 
 <div mat-dialog-actions>
