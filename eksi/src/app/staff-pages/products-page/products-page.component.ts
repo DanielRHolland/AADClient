@@ -35,10 +35,12 @@ export class ProductsPageComponent implements OnInit
   }
 
   addProduct(product: Product) {
-    this.productsService.saveProduct(product).subscribe( data => {
-      console.log('Success');
-      this.products.push(product);
-    });
+    if (product && product.id && product.id !== '') {
+      this.productsService.saveProduct(product).subscribe( data => {
+        console.log('Success');
+        this.products.push(product);
+      });
+    }
   }
 
   launchProductDialog(item: Product = null) {

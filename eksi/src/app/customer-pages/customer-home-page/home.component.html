@@ -30,13 +30,18 @@
 </table>
 
 
+<mat-toolbar class="bottom-toolbar" >
+  <span>
+    <button mat-button class="btn" (click)="openDialog_AddItem()"> Add Item </button>
+  </span>
 
-<div class="buttons">
-  <div class="container" div style="float:left;">
-    <button class="btn" (click)="openDialog_AddItem()"> Add Item </button>
-  </div>
+  <span>
+    <button mat-button class="btn" (click)="openDialog_ScanItem()"> Scan Item </button>
+  </span>
 
-  <div class="container" div style="float:right;">
-    <button class="btn" (click)="openDialog_CheckoutItems()"> Check Out </button>
-  </div>
-</div>
+  <span class="spacer"></span>
+
+  <span>
+    <button mat-button class="btn" (click)="openDialog_CheckoutItems()"> Check Out </button>
+  </span>
+</mat-toolbar>

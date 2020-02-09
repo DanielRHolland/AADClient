@@ -9,8 +9,7 @@ import { ProductsService } from '../../../services/products/products.service';
   styleUrls: ['./add-product-modal.component.css']
 })
 
-export class AddProductModalComponent implements OnInit
-{
+export class AddProductModalComponent implements OnInit {
   model: Product = new Product ('', '', 0, '', 0, 0, '');
 
   editMode = false;
@@ -23,6 +22,7 @@ export class AddProductModalComponent implements OnInit
   }
 
   onNoClick(): void {
+    this.model.id = '';
     this.dialogRef.close(); // Closes the dialog box
   }
 
