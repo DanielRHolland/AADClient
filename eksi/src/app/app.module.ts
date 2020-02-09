@@ -37,6 +37,7 @@ import { StartingPageComponent } from './starting-page/starting-page.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { BarcodeReaderComponent } from './barcode-reader/barcode-reader.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
     EditStaffMemberModalComponent,
     ToolbarComponent,
     BarcodeReaderComponent,
-    SearchboxComponent
+    SearchboxComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +89,8 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
     EditTransactionModalComponent,
     DeleteTransactionModalComponent,
     AddStaffMemberModalComponent,
-    EditStaffMemberModalComponent ]
+    EditStaffMemberModalComponent,
+    ConfirmDialogComponent ]
 })
 
 export class AppModule { }
