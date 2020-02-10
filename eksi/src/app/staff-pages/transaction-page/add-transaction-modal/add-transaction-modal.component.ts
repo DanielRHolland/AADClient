@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource} from '@angular/material';
 import { Transaction } from '../../../models/transaction.model';
 import { TransactionEntry } from '../../../models/transaction-entry.model';
 import { AuthoService } from "../../../services/autho/autho.service";
@@ -13,7 +13,10 @@ import { v4 as uuid } from 'uuid';
 
 export class AddTransactionModalComponent implements OnInit {
   existingTransaction = true;
-  displayedColumns = ['productId', 'quantity', 'infoButton', 'deleteButton'];
+  displayedColumns = ['productId', 'quantity', 'deleteButton'];
+
+  entriesDataSource: MatTableDataSource<TransactionEntry>;
+
   constructor(public dialog: MatDialog,
     public dialogRef: MatDialogRef<AddTransactionModalComponent>,
               @Inject(MAT_DIALOG_DATA) public transaction: Transaction,
@@ -26,21 +29,34 @@ export class AddTransactionModalComponent implements OnInit {
     this.dialogRef.close(); // Closes the dialog box
   }
 
+  onSubmit() {
+    this.entriesDataSource.data.forEach(item => {
+      if (item.productId === '' || item.quantity === 0) {
+        this.openDialog_RemoveEntry(item);
+      }
+    });
+    this.transaction.items = this.entriesDataSource.data;
+    this.dialogRef.close(this.transaction);
+  }
+
   ngOnInit()  {
     if (this.transaction == null) {
       this.transaction = new Transaction(uuid(), this.authoService.getNNumber(), '',
       Math.floor(Date.now() / 1000), new Array<TransactionEntry>());
       this.existingTransaction = false;
     }
+    this.entriesDataSource = new MatTableDataSource<TransactionEntry>(this.transaction.items);
   }
 
-  openDialog_Entry(item) {
-
+  openDialog_Entry() {
+    this.entriesDataSource.data.push(new TransactionEntry(uuid(), '', 0));
+    this.entriesDataSource.filter = '';
+    console.log(this.entriesDataSource.data);
   }
 
   openDialog_RemoveEntry(item) {
-    const i = this.transaction.items.indexOf(item);
-    this.transaction.items.splice(i, 1);
+    const i = this.entriesDataSource.data.indexOf(item);
+    this.entriesDataSource.data.splice(i, 1);
   }
 
 }

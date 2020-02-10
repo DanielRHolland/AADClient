@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { AddTransactionModalComponent } from './add-transaction-modal/add-transaction-modal.component';
-import { EditTransactionModalComponent } from './edit-transaction-modal/edit-transaction-modal.component';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 import { TransactionsService } from '../../services/transactions/transactions.service';
 import { Transaction } from '../../models/transaction.model';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-transaction-page',
@@ -16,7 +16,7 @@ export class TransactionPageComponent implements OnInit {
   dataSource: MatTableDataSource<Transaction>;
   transactions;
   displayedColumns = ['transactionId', 'nNumber',
-'budgetCode', 'timestamp', 'infoButton', 'deleteButton'];
+'budgetCode', 'timestamp', 'infoButton', 'deleteButton', 'refundButton'];
 
   constructor(public dialog: MatDialog,
               private transactionsService: TransactionsService)  {
@@ -41,7 +41,7 @@ export class TransactionPageComponent implements OnInit {
       this.transactionsService.saveTransaction(transaction).subscribe(data => {
           console.log('Success');
           this.dataSource.data.push(transaction);
-          //TODO make this refresh
+          // TODO make this refresh
         }
       );
     }
@@ -56,10 +56,37 @@ export class TransactionPageComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(response => {
       if (response) {
-        console.log('Deleting Transaction...');
-        this.transactionsService.deleteTransaction(item.transactionId);
+        this.deleteTransaction(item.transactionId);
       }
     });
+  }
+
+  private deleteTransaction(id: string) {
+    console.log('Deleting Transaction...');
+    this.transactionsService.deleteTransaction(id).subscribe(data => console.log('deleted transaction'));
+  }
+
+  openDialog_ProcessRefund(transaction: Transaction) {
+    const msg = 'Are you sure you want to refund this transaction? (id: '
+    + transaction.transactionId + ')';
+    const dialogRef = this.dialog.open(ConfirmDialogComponent,
+      {
+        data: msg
+      });
+    dialogRef.afterClosed().subscribe(response => {
+        if (response) {
+          this.refundTransaction(transaction);
+        }
+      });
+  }
+
+  private refundTransaction(transaction: Transaction) {
+    transaction.items.forEach( item => {
+      item.quantity = -item.quantity;
+    });
+    transaction.transactionId = uuid();
+    console.log('Refunding Transaction...');
+    this.transactionsService.saveTransaction(transaction).subscribe(data => console.log('Transaction refunded'));
   }
 
   search(searchTerm: string) {
