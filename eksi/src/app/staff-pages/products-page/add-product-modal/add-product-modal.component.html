@@ -17,19 +17,19 @@
   </mat-form-field>
 
   <mat-form-field class="full-width-field">
-    <input matInput type="text" placeholder="Stock Location" name="locationName" required [(ngModel)]="model.locationName">
+    <input matInput type="text" placeholder="Stock Location" name="locationName"  [(ngModel)]="model.locationName">
   </mat-form-field>
 
   <mat-form-field class="full-width-field">
-    <input matInput type="datetime" placeholder="Expiry Date" name="expiryDate" required [(ngModel)]="model.expiryDate">
+    <input matInput type="datetime" placeholder="Expiry Date" name="expiryDate"  [(ngModel)]="model.expiryDate">
   </mat-form-field>
 
   <mat-form-field class="full-width-field">
-    <input matInput type="number" placeholder="Cost Price" name="costPrice" required [(ngModel)]="model.costPrice">
+    <input matInput type="number" placeholder="Cost Price" name="costPrice"  [(ngModel)]="model.costPrice">
   </mat-form-field>
 
   <mat-form-field class="full-width-field">
-    <input matInput type="number" placeholder="Description" name="description" required [(ngModel)]="model.description">
+    <input matInput type="text" placeholder="Description" name="description"  [(ngModel)]="model.description">
   </mat-form-field>
 
   <button mat-button [mat-dialog-close]="model" cdkFocusInitial>Save Record</button>

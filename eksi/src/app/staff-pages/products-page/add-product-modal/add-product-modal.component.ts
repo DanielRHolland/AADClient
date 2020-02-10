@@ -9,7 +9,7 @@ import { Product } from '../../../models/product.model';
 })
 
 export class AddProductModalComponent implements OnInit {
-  model: Product = new Product ('', '', 0, '', 0, 0, '');
+  model: Product = new Product ('', '', 1, '', 0 , 0, '');
 
   editMode = false;
 
