@@ -2,7 +2,6 @@
   Transactions
 </h1>
 
-
 <app-searchbox (query)=search($event)></app-searchbox>
 
 <table mat-table [dataSource]="dataSource">
@@ -24,7 +23,7 @@
 
   <ng-container matColumnDef="timestamp">
     <th mat-header-cell *matHeaderCellDef> Date </th>
-    <td mat-cell *matCellDef="let item"> {{item.timestamp | date}} </td>
+    <td mat-cell *matCellDef="let item"> {{item.timeStamp | date}} </td>
   </ng-container>
 
   <ng-container matColumnDef= "infoButton">
