@@ -18,8 +18,6 @@ import { CheckoutModalComponent } from './customer-pages/customer-home-page/chec
 import { DemoMaterialModule } from './material-module';
 import { AddProductModalComponent } from './staff-pages/products-page/add-product-modal/add-product-modal.component';
 import { AddTransactionModalComponent } from './staff-pages/transaction-page/add-transaction-modal/add-transaction-modal.component';
-import { EditTransactionModalComponent } from './staff-pages/transaction-page/edit-transaction-modal/edit-transaction-modal.component';
-import { DeleteTransactionModalComponent } from './staff-pages/transaction-page/delete-transaction-modal/delete-transaction-modal.component';
 import { DeleteProductModalComponent } from './staff-pages/products-page/delete-product-modal/delete-product-modal.component';
 
 import { AccountInfoComponent } from './account-info/account-info.component';
@@ -57,8 +55,6 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     TransactionPageComponent,
     AddTransactionModalComponent,
     DeleteProductModalComponent,
-    EditTransactionModalComponent,
-    DeleteTransactionModalComponent,
     StartingPageComponent,
     EditStaffMemberModalComponent,
     ToolbarComponent,
@@ -86,8 +82,6 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     AddProductModalComponent,
     AddTransactionModalComponent,
     DeleteProductModalComponent,
-    EditTransactionModalComponent,
-    DeleteTransactionModalComponent,
     AddStaffMemberModalComponent,
     EditStaffMemberModalComponent,
     ConfirmDialogComponent ]
