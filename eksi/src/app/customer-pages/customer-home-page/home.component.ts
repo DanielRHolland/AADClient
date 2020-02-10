@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatTableDataSource } from '@angular/material';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CheckoutModalComponent } from './checkout-modal/checkout-modal.component';
 import { Transaction } from '../../models/transaction.model';
 import { AuthoService } from '../../services/autho/autho.service';
@@ -20,7 +19,7 @@ export class CustomerHomeComponent implements OnInit {
   dataSource: MatTableDataSource<TransactionEntry>;
   displayedColumns = ['productId', 'quantity', 'infoButton', 'deleteButton'];
 
-  constructor(public dialog: MatDialog, private httpClient: HttpClient,
+  constructor(public dialog: MatDialog,
               private authoService: AuthoService,
               private transactionsService: TransactionsService) { }
 

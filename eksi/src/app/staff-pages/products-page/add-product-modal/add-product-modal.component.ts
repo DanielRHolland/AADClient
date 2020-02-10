@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Product } from '../../../models/product.model';
-import { ProductsService } from '../../../services/products/products.service';
 
 @Component({
   selector: 'app-add-product-modal',
@@ -16,7 +15,6 @@ export class AddProductModalComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               public dialogRef: MatDialogRef<AddProductModalComponent>,
-              private productsService: ProductsService,
              @Inject(MAT_DIALOG_DATA) public product: Product ) {
 
   }

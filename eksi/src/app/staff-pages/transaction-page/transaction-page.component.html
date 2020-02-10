@@ -2,60 +2,59 @@
   Transactions Page
 </h1>
 
-<p>
-  Here you view all previous transactions as well being able to view, add, edit and delete them. 
-</p>
 
-<br>
-<br>
+<app-searchbox (query)=search($event)></app-searchbox>
 
-<!-- Load icon library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<table mat-table [dataSource]="dataSource">
 
-<!-- The form -->
-<form class="example" action="action_page.php">
-  <input type="text" placeholder="Search a transaction code..." name="searchtransaction">
-  <button type="submit"><i class="fa fa-search"></i></button>
-</form>
+  <ng-container matColumnDef="transactionId">
+    <th mat-header-cell *matHeaderCellDef> Transaction ID </th>
+    <td mat-cell *matCellDef="let item"> {{item.transactionId}} </td>
+  </ng-container>
 
-<br>
+  <ng-container matColumnDef="nNumber">
+    <th mat-header-cell *matHeaderCellDef> NNumber </th>
+    <td mat-cell *matCellDef="let item"> {{item.nNumber}} </td>
+  </ng-container>
 
-<!-- Table displaying products -->
-<div class="container-table">    
-  <table class="table table-bordered table-hover">
-	<div *ngIf="transactions">
-    <tr>
-      <th>Transaction ID</th>    
-      <th>User ID</th>
-      <th>Used Budget Code</th>
-      <th>Time of Transaction</th>    
-      <th>Number of Transactions</th>    
-	  </tr>
-    <tr *ngFor="let transaction of transactions">
-      <td>{{transaction.id}}</td>   
-      <td>{{transaction.userid}}</td>    
-      <td>{{transaction.usedbudgetcode}}</td>    
-      <td>{{transaction.timeoftransaction}}</td>    
-      <td>{{transaction.numberoftransactions}}</td> 
-    </tr>  
-	</div>   
-  </table> 
-</div>
+  <ng-container matColumnDef="budgetCode">
+    <th mat-header-cell *matHeaderCellDef> Budget Code </th>
+    <td mat-cell *matCellDef="let item"> {{item.budgetCode}} </td>
+  </ng-container>
 
-<br>
-<br>
-<br>
+  <ng-container matColumnDef="timestamp">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let item"> {{item.timestamp | date}} </td>
+  </ng-container>
 
-<div class="buttons">
-  <div class="container" div style="float:left;">
-    <button class="btn" (click)="openDialog_AddTransaction()"> Add Transaction Log </button>
-  </div>
+  <ng-container matColumnDef= "infoButton">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let item">
+    <button mat-button class="btn" (click)="openDialog_Transaction(item)"> Open </button>
+    </td>
+  </ng-container>
 
-  <div class="container">
-    <button class="btn" (click)="openDialog_EditTransaction()"> Edit Transaction Log </button>
-  </div>
+  <ng-container matColumnDef= "deleteButton">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let item">
+    <button mat-button class="btn" (click)="openDialog_DeleteTransaction(item)"> Delete </button>
+    </td>
+  </ng-container>
 
-  <div class="container" div style="float:right;">
-    <button class="btn" (click)="openDialog_DeleteTransaction()"> Delete Transaction Log </button>
-  </div>
-</div>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+<mat-toolbar class="bottom-toolbar" >
+  <span>
+    <button mat-button class="btn" (click)="openDialog_Transaction()"> Add Transaction </button>
+  </span>
+
+  <span class="spacer"></span>
+
+  <span>
+    <button mat-button class="btn" (click)="openDialog_ProcessRefund()"> Process Refund </button>
+  </span>
+
+</mat-toolbar>

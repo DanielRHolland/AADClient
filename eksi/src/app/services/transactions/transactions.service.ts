@@ -9,6 +9,7 @@ import { Transaction } from '../../models/transaction.model';
 })
 export class TransactionsService {
 
+
   constructor(private httpClient: HttpClient, private connSettings: ConnectionSettingsService) { }
 
   public getTransactions() {
@@ -21,6 +22,9 @@ export class TransactionsService {
 
   public saveTransaction(transaction: Transaction) {
     return this.httpClient.post<Transaction>(this.getOrigin() + '/s', transaction, this.connSettings.getOptions());
+  }
+  public deleteTransaction(transactionId: string) {
+    return this.httpClient.delete(this.getOrigin() + '/d/' + transactionId);
   }
 
   private getOrigin() {

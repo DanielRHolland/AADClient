@@ -7,3 +7,8 @@
     /*half of the modal width*/
     margin-left: -180px;
 }
+
+
+table {
+  width: 100%;
+}

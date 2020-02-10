@@ -2,34 +2,74 @@
 <h1 mat-dialog-title> Hello User </h1>
 
 <div mat-dialog-content>
-  <p>
-    Please fill in the below details:
-  </p>
 
-  <form action="/action_page.php">
-    Transaction ID:<br>
-    <input type="number" name="productname">
-    <br><br>
+  <mat-form-field class="full-width-field">
+    <input matInput type="text" placeholder="Enter Transaction Id" name="id" [disabled]="editMode"  required [(ngModel)]="transaction.transactionId">
+  </mat-form-field>
 
-    User ID:<br>
-    <input type="text" name="productcode">
-    <br><br>
+  <mat-form-field class="full-width-field">
+    <input matInput type="text" placeholder="Enter NNumber" name="nNumber"  required [(ngModel)]="transaction.nNumber">
+  </mat-form-field>
 
-    Used Budget Code:<br>
-    <input type="number" name="productcode">
-    <br><br>
 
-    Date of Transaction:<br>
-    <input type="date" name="currentstock">
-    <br><br>
+  <mat-form-field class="full-width-field">
+    <input matInput type="text" placeholder="Enter Budget Code" name="budgetCode"  required [(ngModel)]="transaction.budgetCode">
+  </mat-form-field>
 
-    Number Of Transactions:<br>
-    <input type="number" name="basicdescription">
-    <br><br>
 
-    <input type="submit" value="Save Record">
-  </form>
+  <mat-form-field class="full-width-field">
+    {{transaction.timeStamp | date}}
+  </mat-form-field>
+
+
+<table mat-table [dataSource]="transaction.items">
+
+  <ng-container matColumnDef="productId">
+    <th mat-header-cell *matHeaderCellDef> Product ID </th>
+    <td mat-cell *matCellDef="let item"> {{item.productId}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef> Quantity </th>
+    <td mat-cell *matCellDef="let item"> {{item.quantity}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef= "infoButton">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let item">
+    <button mat-button class="btn" (click)="openDialog_Entry(item)"> Open </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef= "deleteButton">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let item">
+    <button mat-button class="btn" (click)="openDialog_RemoveEntry(item)"> Delete </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+  <button mat-button [mat-dialog-close]="transaction">Save Transaction</button>
 </div>
+
+<mat-toolbar class="bottom-toolbar" >
+  <span>
+    <button mat-button class="btn" (click)="openDialog_Entry()"> Add Transaction Log Entry </button>
+  </span>
+
+  <span class="spacer"></span>
+
+  <span>
+    <!-- <button mat-button class="btn" (click)="openDialog_ProcessRefund()"> Process Refund </button> -->
+  </span>
+
+</mat-toolbar>
+
+
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close prompt</button>
