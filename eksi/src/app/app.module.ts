@@ -60,7 +60,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     ToolbarComponent,
     BarcodeReaderComponent,
     SearchboxComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
