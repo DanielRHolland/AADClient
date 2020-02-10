@@ -14,12 +14,12 @@ import { v4 as uuid } from 'uuid';
 export class AddTransactionModalComponent implements OnInit {
   existingTransaction = true;
   displayedColumns = ['productId', 'quantity', 'deleteButton'];
-
+  transaction: Transaction;
   entriesDataSource: MatTableDataSource<TransactionEntry>;
 
   constructor(public dialog: MatDialog,
     public dialogRef: MatDialogRef<AddTransactionModalComponent>,
-              @Inject(MAT_DIALOG_DATA) public transaction: Transaction,
+              @Inject(MAT_DIALOG_DATA) public data: Transaction,
               private authoService: AuthoService) {
 
   }
@@ -40,6 +40,7 @@ export class AddTransactionModalComponent implements OnInit {
   }
 
   ngOnInit()  {
+    this.transaction = {...this.data};
     if (this.transaction == null) {
       this.transaction = new Transaction(uuid(), this.authoService.getNNumber(), '',
       Math.floor(Date.now() / 1000), new Array<TransactionEntry>());

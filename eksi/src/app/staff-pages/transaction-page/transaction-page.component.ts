@@ -37,7 +37,7 @@ export class TransactionPageComponent implements OnInit {
   }
 
   addTransaction(transaction: Transaction): void {
-    if (transaction && transaction.transactionId) {
+    if (transaction && transaction.transactionId && transaction.transactionId !== '') {
       this.transactionsService.saveTransaction(transaction).subscribe(data => {
           console.log('Success');
           this.dataSource.data.push(transaction);
