@@ -35,8 +35,8 @@ form.example::after {
   clear: both;
   display: table;
 }
-.table > tbody > tr > td, 
-.table > tbody > tr > th 
+.table > tbody > tr > td,
+.table > tbody > tr > th
 {
 	border-top-color: #000000;
 	border-left-color: #000000;
@@ -74,4 +74,8 @@ form.example::after {
 
 .container .btn:hover {
   background-color: black;
+}
+
+table {
+  width: 100%;
 }
