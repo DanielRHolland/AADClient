@@ -41,9 +41,9 @@ export class AddTransactionModalComponent implements OnInit {
 
   ngOnInit()  {
     this.transaction = {...this.data};
-    if (this.transaction == null) {
+    if (!this.transaction || !this.transaction.transactionId) {
       this.transaction = new Transaction(uuid(), this.authoService.getNNumber(), '',
-      Math.floor(Date.now() / 1000), new Array<TransactionEntry>());
+      Date.now(), new Array<TransactionEntry>());
       this.existingTransaction = false;
     }
     this.entriesDataSource = new MatTableDataSource<TransactionEntry>(this.transaction.items);
@@ -58,6 +58,7 @@ export class AddTransactionModalComponent implements OnInit {
   openDialog_RemoveEntry(item) {
     const i = this.entriesDataSource.data.indexOf(item);
     this.entriesDataSource.data.splice(i, 1);
+    this.entriesDataSource.filter = '';
   }
 
 }

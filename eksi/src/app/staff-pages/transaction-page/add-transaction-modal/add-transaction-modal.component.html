@@ -3,14 +3,6 @@
 
 <div mat-dialog-content>
 
-  <div class="full-width-field">
-    Transaction ID: {{transaction.transactionId}}
-  </div>
-
-  <div class="full-width-field">
-    Creation Date: {{transaction.timeStamp | date}}
-  </div>
-
   <mat-form-field class="full-width-field">
     <input matInput type="text" placeholder="Enter NNumber" name="nNumber"  required [(ngModel)]="transaction.nNumber">
   </mat-form-field>
@@ -48,6 +40,6 @@
     <button mat-button class="btn" (click)="openDialog_Entry()"> Add Transaction Entry </button>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onSubmit()">Save Transaction</button>
-  <button mat-button (click)="onNoClick()">Close prompt</button>
+  <button mat-raised-button (click)="onSubmit()">Save Transaction</button>
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
 </div>

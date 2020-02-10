@@ -1,7 +1,7 @@
 <div mat-dialog-content>
   <form >
     <mat-form-field class="full-width-field">
-      <input matInput type="integer" placeholder="Enter Product ID" name="pid" required [(ngModel)]="productId">
+      <input matInput type="integer" placeholder="Product ID" name="pid" required [(ngModel)]="productId">
     </mat-form-field>
     <button mat-button type="submit" [mat-dialog-close]="productId" class="btn btn-success">Add</button>
   </form>

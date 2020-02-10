@@ -14,8 +14,11 @@
   transform: translate(-50%,140%);
 }
 
-
+.app-menu-button {
+  width: 100%;
+}
 
 @media (min-width:500px) {
   .container { width: 30%; }
+  .app-menu-button { width: 33% }
 }

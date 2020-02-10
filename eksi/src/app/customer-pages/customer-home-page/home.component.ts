@@ -8,6 +8,8 @@ import { TransactionEntry } from '../../models/transaction-entry.model';
 import { ManualModalComponent } from './manual-modal/manual-modal.component';
 import { TransactionsService } from '../../services/transactions/transactions.service';
 import { ScanModalComponent } from './scan-modal/scan-modal.component';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +23,9 @@ export class CustomerHomeComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               private authoService: AuthoService,
-              private transactionsService: TransactionsService) { }
+              private transactionsService: TransactionsService,
+              private snackBar: MatSnackBar,
+              private router: Router) { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<TransactionEntry>(new Array<TransactionEntry>());
@@ -41,15 +45,24 @@ export class CustomerHomeComponent implements OnInit {
   }
 
   openDialog_CheckoutItems() {
+    if (this.dataSource.data.length === 0) {
+      this.snackBar.open('No items in basket', 'close');
+    } else {
     const dialogRef = this.dialog.open(CheckoutModalComponent);
     dialogRef.afterClosed().subscribe(budgetCode => this.checkout(budgetCode));
+    }
   }
 
   checkout(budgetCode: string) {
-    const transaction = new Transaction(uuid(), this.authoService.getNNumber(),
-    budgetCode, Math.floor(Date.now() / 1000), this.dataSource.data);
-    this.transactionsService.saveTransaction(transaction).subscribe(
-      data => console.log('Success!'));
+    if (!budgetCode) {
+      this.snackBar.open('No Budget Code Provided', 'close');
+    } else {
+      const transaction = new Transaction(uuid(), this.authoService.getNNumber(),
+      budgetCode, Date.now(), this.dataSource.data);
+      this.transactionsService.saveTransaction(transaction).subscribe(
+        data => {console.log('Success!'); this.snackBar.open('Checkout Complete', 'close'); this.router.navigateByUrl('/c/login');},
+        error => {console.error('Checkout Failed!'); this.snackBar.open('Checkout Unsuccessful', 'close'); });
+    }
   }
 
   openDialog_ScanItem() {

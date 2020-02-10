@@ -1,16 +1,17 @@
-<div style="float: none;">
-<a class="container" (click)="router.navigate(['/s/transactions'])">
-  <p class="text">Transaction Log</p>
-  <img src="assets/img/log.png" title="Transaction Log" alt="Transaction Log" width="100%">
-</a>
+<div class="app-menu-buttons">
+  <div class="app-menu-button" div  routerLink="/s/transactions">
+    <img src="assets/img/log.png">
+    <h3> Transactions </h3>
+  </div>
 
-<a class="container" (click)="router.navigate(['/s/products'])">
-  <p class="text">Products</p>
-  <img src="assets/img/basket.png" title="Products" alt="Products" width="100%">
-</a>
+  <div class="app-menu-button" div  routerLink="/s/products">
+    <img src="assets/img/basket.png">
+    <h3> Products </h3>
+  </div>
 
-<a class="container" (click)="router.navigate(['/s/members'])">
-  <p class="text">Staff Members</p>
-  <img src="assets/img/user.png" title="Staff Members" alt="Staff Members" width="100%">
-</a>
+  <div class="app-menu-button" div  routerLink="/s/members">
+    <img src="assets/img/user.png">
+    <h3> Staff Members </h3>
+  </div>
 </div>
+

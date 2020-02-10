@@ -15,7 +15,7 @@ import { v4 as uuid } from 'uuid';
 export class TransactionPageComponent implements OnInit {
   dataSource: MatTableDataSource<Transaction>;
   transactions;
-  displayedColumns = ['transactionId', 'nNumber',
+  displayedColumns = ['nNumber',
 'budgetCode', 'timestamp', 'infoButton', 'deleteButton', 'refundButton'];
 
   constructor(public dialog: MatDialog,
