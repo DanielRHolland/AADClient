@@ -22,7 +22,7 @@ export class AddTransactionModalComponent implements OnInit {
   }
 
   onNoClick() {
-    this.transaction = null;
+    this.transaction.transactionId = null;
     this.dialogRef.close(); // Closes the dialog box
   }
 
