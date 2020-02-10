@@ -11,8 +11,52 @@
   width: 100%;
   text-align: center;
 }
+
+.mat-raised-button {
+  background-color: #f80058;
+  color: whitesmoke;
+}
+
+
 .spacer {
   flex: 1 1 auto;
 }
 
+.app-menu-button {
+  position: relative;
+  width: 50%;
+  background-color: rgb(255, 214, 221);
+}
 
+.app-menu-button {
+  width: 100%;
+  float: left;
+  cursor: pointer;
+}
+
+.app-menu-button h3 {
+  text-align: center;
+}
+
+@media (min-width:500px) {
+  .app-menu-button {
+    width: 50%;
+  }
+}
+
+.app-menu-button img {
+  width: 100%;
+  height: auto;
+}
+
+.app-menu-button:hover {
+  background-color: pink;
+}
+
+.app-menu-buttons {
+  width: 100%;
+}
+
+.mat-toolbar {
+  background-color: #d5d5d5;
+}
