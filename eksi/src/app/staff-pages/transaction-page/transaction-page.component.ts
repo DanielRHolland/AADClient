@@ -81,12 +81,16 @@ export class TransactionPageComponent implements OnInit {
   }
 
   private refundTransaction(transaction: Transaction) {
+    if (transaction.items) {
     transaction.items.forEach( item => {
       item.quantity = -item.quantity;
     });
     transaction.transactionId = uuid();
     console.log('Refunding Transaction...');
     this.transactionsService.saveTransaction(transaction).subscribe(data => console.log('Transaction refunded'));
+    } else {
+      console.log('No Transaction Items');
+    }
   }
 
   search(searchTerm: string) {
