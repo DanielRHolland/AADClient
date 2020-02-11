@@ -3,3 +3,6 @@ table {
   width: 100%;
 }
 
+.bottom-toolbar .mat-raised-button {
+  margin-right: 5px;
+}
