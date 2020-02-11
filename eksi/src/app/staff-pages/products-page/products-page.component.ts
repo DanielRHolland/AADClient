@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ProductsService } from '../../services/products/products.service';
 import { AddProductModalComponent } from './add-product-modal/add-product-modal.component';
-import { DeleteProductModalComponent } from './delete-product-modal/delete-product-modal.component';
+import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -56,13 +56,23 @@ export class ProductsPageComponent implements OnInit
   }
 
   openDialog_DeleteProduct(item: Product) {
-    const dialogRef = this.dialog.open(DeleteProductModalComponent,
+    const msg = 'Are you sure that you want to delete this product? (Product ID: '
+    + item.id
+    + ', Product Name: '
+    + item.name + ')';
+    const dialogRef = this.dialog.open(ConfirmDialogComponent,
     {
-      data : item
+      data : msg
     });
 
-    dialogRef.afterClosed().subscribe(id => this.deleteProduct(id));
+    dialogRef.afterClosed().subscribe(
+      deleteProduct => {
+        if (deleteProduct) {
+          this.deleteProduct(item.id);
+        }
+      });
   }
+
   deleteProduct(id: string) {
     if (id) {
       this.productsService.deleteProduct(id).subscribe(data => console.log(data));

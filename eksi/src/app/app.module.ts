@@ -18,7 +18,6 @@ import { CheckoutModalComponent } from './customer-pages/customer-home-page/chec
 import { DemoMaterialModule } from './material-module';
 import { AddProductModalComponent } from './staff-pages/products-page/add-product-modal/add-product-modal.component';
 import { AddTransactionModalComponent } from './staff-pages/transaction-page/add-transaction-modal/add-transaction-modal.component';
-import { DeleteProductModalComponent } from './staff-pages/products-page/delete-product-modal/delete-product-modal.component';
 
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -54,7 +53,6 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     AddProductModalComponent,
     TransactionPageComponent,
     AddTransactionModalComponent,
-    DeleteProductModalComponent,
     StartingPageComponent,
     EditStaffMemberModalComponent,
     ToolbarComponent,
@@ -81,7 +79,6 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     CheckoutModalComponent,
     AddProductModalComponent,
     AddTransactionModalComponent,
-    DeleteProductModalComponent,
     AddStaffMemberModalComponent,
     EditStaffMemberModalComponent,
     ConfirmDialogComponent ]
