@@ -1,13 +1,11 @@
 <div mat-dialog-content>
-  <form (ngSubmit)="onSubmit()" >
     <mat-form-field class="full-width-field">
       <label for="budgetCode">Budget Code:</label>
       <input matInput type="text" class="form-control" id="budgetCode" required [(ngModel)]="budgetCode" name="budgetCode">
     </mat-form-field>
-    <button mat-button type="submit" [mat-dialog-close]="budgetCode" class="btn btn-success">Confirm Checkout</button>
-  </form>
 </div>
 
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()"> Cancel </button>
+  <button mat-raised-button [mat-dialog-close]="budgetCode">Confirm Checkout</button>
+  <button mat-raised-button (click)="onNoClick()"> Cancel </button>
 </div>

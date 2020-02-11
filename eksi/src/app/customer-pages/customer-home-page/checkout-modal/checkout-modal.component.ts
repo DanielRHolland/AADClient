@@ -14,9 +14,6 @@ export class CheckoutModalComponent implements OnInit
   {
 
   }
-  onSubmit() {
-
-  }
 
   onNoClick() {
     this.dialogRef.close(); // Closes the dialog box
