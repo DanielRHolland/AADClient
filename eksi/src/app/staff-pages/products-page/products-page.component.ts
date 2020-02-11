@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar, MatTableDataSource } from '@angular/material';
 import { ProductsService } from '../../services/products/products.service';
 import { AddProductModalComponent } from './add-product-modal/add-product-modal.component';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
@@ -16,18 +16,20 @@ export class ProductsPageComponent implements OnInit
   displayedColumns = ['id', 'name', 'quantity',
    'locationName', 'expiryDate',
     'costPrice', 'description', 'editButton', 'deleteButton'];
-  products;
+  dataSource: MatTableDataSource<Product>; // products: Product[];
 
-  constructor(private productsService: ProductsService, public dialog: MatDialog) { }
+  constructor(private productsService: ProductsService, public dialog: MatDialog, private snackbar: MatSnackBar) { }
 
-  ngOnInit()
-  {
+  ngOnInit() {
+    this.dataSource = new MatTableDataSource<Product>();
     this.update();
   }
 
-  update()
-  {
-    this.productsService.getProducts().subscribe( data => this.products = data );
+  update() {
+    this.productsService.getProducts().subscribe( data => {
+      this.dataSource.data = data;
+      this.dataSource.filter = '';
+    } );
   }
 
   openDialog_AddProduct() {
@@ -38,7 +40,8 @@ export class ProductsPageComponent implements OnInit
     if (product && product.id && product.id !== '') {
       this.productsService.saveProduct(product).subscribe( data => {
         console.log('Success');
-        this.products.push(product);
+        this.dataSource.data.push(product);
+        this.dataSource.filter = '';
       });
     }
   }
@@ -75,7 +78,12 @@ export class ProductsPageComponent implements OnInit
 
   deleteProduct(id: string) {
     if (id) {
-      this.productsService.deleteProduct(id).subscribe(data => console.log(data));
+      this.productsService.deleteProduct(id).subscribe(data => {
+        console.log(data);
+        this.snackbar.open('Deleted Product');
+        this.dataSource.data.splice(this.dataSource.data.findIndex(p => p.id === id), 1);
+        this.dataSource.filter = '';
+      });
     }
   }
 

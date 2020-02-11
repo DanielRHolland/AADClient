@@ -13,11 +13,11 @@ export class ProductsService {
   constructor(private httpClient: HttpClient, private connSettings: ConnectionSettingsService ) { }
 
   public getProducts() {
-    return this.httpClient.get(this.getOrigin() + '/l');
+    return this.httpClient.get<Product[]>(this.getOrigin() + '/l');
   }
 
   public getProduct(id: string) {
-    return this.httpClient.get( this.getOrigin() + '/g/' + id);
+    return this.httpClient.get<Product>( this.getOrigin() + '/g/' + id);
   }
 
   public saveProduct(product: Product) {

@@ -4,7 +4,7 @@
 
 <app-searchbox (query)="search($event)"></app-searchbox>
 
-<table mat-table [dataSource]="products">
+<table mat-table [dataSource]="dataSource">
 
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> ID </th>
