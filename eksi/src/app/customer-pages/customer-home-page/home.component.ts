@@ -7,6 +7,7 @@ import { v4 as uuid } from 'uuid';
 import { TransactionEntry } from '../../models/transaction-entry.model';
 import { ManualModalComponent } from './manual-modal/manual-modal.component';
 import { TransactionsService } from '../../services/transactions/transactions.service';
+import { ProductsService } from '../../services/products/products.service';
 import { ScanModalComponent } from './scan-modal/scan-modal.component';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
@@ -24,6 +25,7 @@ export class CustomerHomeComponent implements OnInit {
   constructor(public dialog: MatDialog,
               private authoService: AuthoService,
               private transactionsService: TransactionsService,
+              private productsService: ProductsService,
               private snackBar: MatSnackBar,
               private router: Router) { }
 
@@ -38,9 +40,16 @@ export class CustomerHomeComponent implements OnInit {
 
   addToList(productId: string) {
     if (productId && productId !== '') {
-      const entry = new TransactionEntry(uuid(), productId, 1);
-      this.dataSource.data.push(entry);
-      this.dataSource.filter = ''; // forces table refresh
+      this.productsService.getProduct(productId).subscribe(data => {
+        if (data) {
+          const entry = new TransactionEntry(uuid(), productId, 1);
+          this.dataSource.data.push(entry);
+          this.dataSource.filter = ''; // forces table refresh
+        } else {
+          this.snackBar.open('No such product exists', 'close');
+        }
+      },
+      error => this.snackBar.open('Action Failed', 'close'));
     }
   }
 
