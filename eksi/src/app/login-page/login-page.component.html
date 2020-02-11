@@ -5,7 +5,7 @@
     <mat-form-field class="full-width-field">
       <input matInput type="text" placeholder="Username" name="uname" required [(ngModel)]="user.id">
     </mat-form-field>
-    <div *ngIf="isStaff">
+    <div *ngIf="authoService.isStaff">
       <mat-form-field class="full-width-field">
         <input matInput type="password" placeholder="Password" name="password" required [(ngModel)]="user.password">
       </mat-form-field>
@@ -14,7 +14,6 @@
     <mat-card-actions>
       <div class="login-buttons">
         <button mat-raised-button type="submit">Login</button>
-        <button mat-raised-button type="button" routerLink="">Cancel</button>
       </div>
     </mat-card-actions>
   </form>
