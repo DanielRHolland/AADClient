@@ -37,7 +37,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-    <button mat-button class="btn" (click)="openDialog_Entry()"> Add Transaction Entry </button>
+    <button mat-button class="btn" (click)="openDialog_Entry()">  <img src='assets/img/add.png' width='40'> Add Transaction Entry </button>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button (click)="onSubmit()">Save Transaction</button>
