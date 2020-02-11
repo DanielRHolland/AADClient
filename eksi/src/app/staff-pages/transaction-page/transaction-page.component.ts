@@ -55,9 +55,9 @@ export class TransactionPageComponent implements OnInit {
     if (transaction && transaction.transactionId && transaction.transactionId !== '') {
       this.transactionsService.saveTransaction(transaction).subscribe(data => {
           console.log('Success');
-          this.dataSource.data.push(transaction);
           this.saveEntries(data.transactionId, transaction.items);
-          // TODO make this refresh
+          this.dataSource.data.push(data);
+          this.dataSource.filter = '';
         },
         error => {
           console.error('Transaction Failed!'); this.snackBar.open('Action Failed', 'close');
@@ -89,7 +89,12 @@ export class TransactionPageComponent implements OnInit {
 
   private deleteTransaction(id: string) {
     console.log('Deleting Transaction...');
-    this.transactionsService.deleteTransaction(id).subscribe(data => console.log('deleted transaction'));
+    this.transactionsService.deleteTransaction(id).subscribe(data => {
+       console.log('deleted transaction');
+       this.snackBar.open('Deleted Transaction', 'close');
+       this.dataSource.data.splice(this.dataSource.data.findIndex(t => t.transactionId === id), 1);
+       this.dataSource.filter = '';
+    });
   }
 
   openDialog_ProcessRefund(transaction: Transaction) {
@@ -118,9 +123,11 @@ export class TransactionPageComponent implements OnInit {
     transaction.transactionId = uuid();
     console.log('Refunding Transaction...');
     this.transactionsService.saveTransaction(transaction).subscribe(data => {
-      this.transactionsService.saveTransactionEntries(data.transactionId, transaction.items).subscribe(data => {
+      this.transactionsService.saveTransactionEntries(data.transactionId, transaction.items).subscribe(entries => {
       console.log('Transaction refunded');
-      this.snackBar.open('Transaction refunded','close')
+      this.snackBar.open('Transaction refunded', 'close');
+      this.dataSource.data.push(data);
+      this.dataSource.filter = '';
       });
     });
     } else {
