@@ -101,7 +101,10 @@ export class TransactionPageComponent implements OnInit {
       });
     dialogRef.afterClosed().subscribe(response => {
         if (response) {
+          this.transactionsService.getTransactionEntries(transaction.transactionId).subscribe(entries => {
+          transaction.items = entries;
           this.refundTransaction(transaction);
+          });
         }
       });
   }
@@ -110,14 +113,21 @@ export class TransactionPageComponent implements OnInit {
     if (transaction.items) {
     transaction.items.forEach( item => {
       item.quantity = -item.quantity;
+      item.entryId = uuid();
     });
     transaction.transactionId = uuid();
     console.log('Refunding Transaction...');
-    this.transactionsService.saveTransaction(transaction).subscribe(data => console.log('Transaction refunded'));
+    this.transactionsService.saveTransaction(transaction).subscribe(data => {
+      this.transactionsService.saveTransactionEntries(data.transactionId, transaction.items).subscribe(data => {
+      console.log('Transaction refunded');
+      this.snackBar.open('Transaction refunded','close')
+      });
+    });
     } else {
       console.log('No Transaction Items');
     }
   }
+
 
   search(searchTerm: string) {
     console.log(searchTerm);
