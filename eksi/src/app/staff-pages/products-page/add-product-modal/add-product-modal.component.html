@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>
 <div *ngIf="editMode; else elseBlock"> Edit Product</div>
-<ng-template #elseBlock></ng-template>
+<ng-template #elseBlock>Add Product</ng-template>
 </h1>
 
 <mat-dialog-content>
@@ -32,9 +32,10 @@
     <input matInput type="text" placeholder="Description" name="description"  [(ngModel)]="model.description">
   </mat-form-field>
 
-  <button mat-button [mat-dialog-close]="model" cdkFocusInitial>Save Record</button>
+
 </mat-dialog-content>
 
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Close prompt</button>
+  <button mat-raised-button [mat-dialog-close]="model">Save</button>
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
 </div>

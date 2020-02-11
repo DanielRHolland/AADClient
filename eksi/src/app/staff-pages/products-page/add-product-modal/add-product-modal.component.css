@@ -7,3 +7,7 @@
     /*half of the modal width*/
     margin-left: -180px;
 }
+
+.mat-dialog-actions {
+  float: right;
+}
