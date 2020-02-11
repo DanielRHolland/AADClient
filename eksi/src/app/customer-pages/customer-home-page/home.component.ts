@@ -11,6 +11,8 @@ import { ProductsService } from '../../services/products/products.service';
 import { ScanModalComponent } from './scan-modal/scan-modal.component';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-home',
@@ -27,7 +29,7 @@ export class CustomerHomeComponent implements OnInit {
               private transactionsService: TransactionsService,
               private productsService: ProductsService,
               private snackBar: MatSnackBar,
-              private router: Router) { }
+              private location: Location) { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<TransactionEntry>(new Array<TransactionEntry>());
@@ -76,7 +78,7 @@ export class CustomerHomeComponent implements OnInit {
 
   saveEntries(transactionId: string, entries: TransactionEntry[]) {
     this.transactionsService.saveTransactionEntries(transactionId, entries).subscribe(
-        data => {console.log('Success!'); this.snackBar.open('Checkout Complete', 'close'); this.router.navigateByUrl('/c/login'); },
+        data => {console.log('Success!'); this.snackBar.open('Checkout Complete', 'close'); this.location.back(); },
         error => {console.error('Checkout Failed!'); this.snackBar.open('Checkout Unsuccessful', 'close'); });
   }
 

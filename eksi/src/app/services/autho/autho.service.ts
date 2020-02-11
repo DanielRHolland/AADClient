@@ -14,6 +14,8 @@ export class AuthoService {
   private nNumber = new BehaviorSubject(null);
   observablenNumber = this.nNumber.asObservable();
 
+  isStaff = false;
+
   constructor(
     private httpClient: HttpClient,
     private connSettings: ConnectionSettingsService) { }
@@ -35,10 +37,6 @@ export class AuthoService {
 
   private getOrigin() {
     return this.connSettings.getOrigin() + '/auth';
-  }
-
-  isStaff() {
-    return this.getApiKey() != null;
   }
 
   changeApiKey(apiKey: string) {

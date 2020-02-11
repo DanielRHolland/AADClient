@@ -37,6 +37,7 @@
 
 .app-menu-button h3 {
   text-align: center;
+  color: #fd0058;
 }
 
 @media (min-width:500px) {
