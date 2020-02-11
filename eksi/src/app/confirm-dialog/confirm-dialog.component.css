@@ -7,3 +7,9 @@
   /*half of the modal width*/
   margin-left: -180px;
 }
+
+
+.mat-raised-button {
+  float: right;
+  margin-left: 5px;
+}
