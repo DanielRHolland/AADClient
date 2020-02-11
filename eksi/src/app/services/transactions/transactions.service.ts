@@ -33,7 +33,7 @@ export class TransactionsService {
   }
 
   public saveTransactionEntries(transactionId: string, transactionEntries: TransactionEntry[]) {
-    return this.httpClient.post<TransactionEntry[]>(this.getOrigin() + '/entries/' + transactionId, transactionEntries, this.connSettings.getOptions());
+    return this.httpClient.post<TransactionEntry[]>(this.getOrigin() + '/entries/s/' + transactionId, transactionEntries, this.connSettings.getOptions());
   }
 
   private getOrigin() {

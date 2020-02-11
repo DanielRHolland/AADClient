@@ -60,9 +60,15 @@ export class CustomerHomeComponent implements OnInit {
       const transaction = new Transaction(uuid(), this.authoService.getNNumber(),
       budgetCode, Date.now(), this.dataSource.data);
       this.transactionsService.saveTransaction(transaction).subscribe(
-        data => {console.log('Success!'); this.snackBar.open('Checkout Complete', 'close'); this.router.navigateByUrl('/c/login');},
+        data => this.saveEntries(data.transactionId, this.dataSource.data),
         error => {console.error('Checkout Failed!'); this.snackBar.open('Checkout Unsuccessful', 'close'); });
     }
+  }
+
+  saveEntries(transactionId: string, entries: TransactionEntry[]) {
+    this.transactionsService.saveTransactionEntries(transactionId, entries).subscribe(
+        data => {console.log('Success!'); this.snackBar.open('Checkout Complete', 'close'); this.router.navigateByUrl('/c/login'); },
+        error => {console.error('Checkout Failed!'); this.snackBar.open('Checkout Unsuccessful', 'close'); });
   }
 
   openDialog_ScanItem() {

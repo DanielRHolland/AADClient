@@ -1,6 +1,6 @@
 export class TransactionEntry {
   constructor(
-    public transactionEntryId: string,
+    public entryId: string,
     public productId: string,
     public quantity: number) {}
 }

@@ -4,7 +4,9 @@ import { AddTransactionModalComponent } from './add-transaction-modal/add-transa
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 import { TransactionsService } from '../../services/transactions/transactions.service';
 import { Transaction } from '../../models/transaction.model';
+import { MatSnackBar } from '@angular/material';
 import { v4 as uuid } from 'uuid';
+import { TransactionEntry } from '../../models/transaction-entry.model';
 
 @Component({
   selector: 'app-transaction-page',
@@ -19,7 +21,8 @@ export class TransactionPageComponent implements OnInit {
 'budgetCode', 'timestamp', 'infoButton', 'deleteButton', 'refundButton'];
 
   constructor(public dialog: MatDialog,
-              private transactionsService: TransactionsService)  {
+              private transactionsService: TransactionsService,
+              private snackBar: MatSnackBar)  {
 
   }
 
@@ -29,10 +32,22 @@ export class TransactionPageComponent implements OnInit {
   }
 
   openDialog_Transaction(transaction: Transaction = null) {
+    if (transaction) {
+      const tCopy = {...transaction};
+      this.transactionsService.getTransactionEntries(tCopy.transactionId).subscribe(entries => {
+        tCopy.items = entries;
+        this.openTransaction(tCopy);
+        });
+    } else {
+      this.openTransaction(transaction);
+    }
+  }
+
+  openTransaction(transaction: Transaction = null) {
     const dialogRef = this.dialog.open(AddTransactionModalComponent,
-    {
-      data: transaction
-    });
+      {
+        data: transaction
+      });
     dialogRef.afterClosed().subscribe( result => this.addTransaction( result ));
   }
 
@@ -41,10 +56,21 @@ export class TransactionPageComponent implements OnInit {
       this.transactionsService.saveTransaction(transaction).subscribe(data => {
           console.log('Success');
           this.dataSource.data.push(transaction);
+          this.saveEntries(data.transactionId, transaction.items);
           // TODO make this refresh
+        },
+        error => {
+          console.error('Transaction Failed!'); this.snackBar.open('Action Failed', 'close');
         }
       );
     }
+  }
+
+
+  saveEntries(transactionId: string, entries: TransactionEntry[]) {
+    this.transactionsService.saveTransactionEntries(transactionId, entries).subscribe(
+        data => {console.log('Success!'); this.snackBar.open('Success', 'close'); },
+        error => {console.error('Saving Entries Failed!'); this.snackBar.open('Action Failed', 'close'); });
   }
 
   openDialog_DeleteTransaction(item: Transaction) {

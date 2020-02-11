@@ -40,7 +40,7 @@ export class AddTransactionModalComponent implements OnInit {
   }
 
   ngOnInit()  {
-    this.transaction = {...this.data};
+    this.transaction = this.data;
     if (!this.transaction || !this.transaction.transactionId) {
       this.transaction = new Transaction(uuid(), this.authoService.getNNumber(), '',
       Date.now(), new Array<TransactionEntry>());
