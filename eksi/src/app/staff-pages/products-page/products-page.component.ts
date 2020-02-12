@@ -49,7 +49,7 @@ export class ProductsPageComponent implements OnInit
   launchProductDialog(item: Product = null) {
      const dialogRef = this.dialog.open(AddProductModalComponent,
       {
-      data: item
+      data: {product: item}
       });
      dialogRef.afterClosed().subscribe( result => this.addProduct(result));
   }

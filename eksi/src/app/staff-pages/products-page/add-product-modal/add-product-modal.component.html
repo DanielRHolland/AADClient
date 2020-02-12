@@ -1,41 +1,43 @@
 <h1 mat-dialog-title>
-<div *ngIf="editMode; else elseBlock"> Edit Product</div>
-<ng-template #elseBlock>Add Product</ng-template>
+Product
 </h1>
 
 <mat-dialog-content>
   <mat-form-field class="full-width-field">
-    <input matInput type="text" placeholder="Product Id" name="id" [disabled]="editMode"  required [(ngModel)]="model.id">
+    <input matInput type="text" placeholder="Product Id" name="id" [disabled]="editMode || disabled"  required [(ngModel)]="model.id">
   </mat-form-field>
 
   <mat-form-field class="full-width-field">
-    <input matInput type="text" placeholder="Product Name" name="name" required [(ngModel)]="model.name">
+    <input matInput type="text" placeholder="Product Name" [disabled]="disabled" name="name" required [(ngModel)]="model.name">
   </mat-form-field>
 
   <mat-form-field class="full-width-field">
-    <input matInput type="number" placeholder="Stock Level" name="quantity" required [(ngModel)]="model.quantity">
+    <input matInput type="number" placeholder="Stock Level" [disabled]="disabled" name="quantity" required [(ngModel)]="model.quantity">
   </mat-form-field>
 
   <mat-form-field class="full-width-field">
-    <input matInput type="text" placeholder="Stock Location" name="locationName"  [(ngModel)]="model.locationName">
+    <input matInput type="text" placeholder="Stock Location" [disabled]="disabled" name="locationName"  [(ngModel)]="model.locationName">
   </mat-form-field>
 
   <mat-form-field class="full-width-field">
-    <input matInput type="datetime" placeholder="Expiry Date" name="expiryDate"  [(ngModel)]="model.expiryDate">
+    <input matInput type="datetime" placeholder="Expiry Date" [disabled]="disabled" name="expiryDate"  [(ngModel)]="model.expiryDate">
   </mat-form-field>
 
   <mat-form-field class="full-width-field">
-    <input matInput type="number" placeholder="Cost Price" name="costPrice"  [(ngModel)]="model.costPrice">
+    <input matInput type="number" placeholder="Cost Price" [disabled]="disabled" name="costPrice"  [(ngModel)]="model.costPrice">
   </mat-form-field>
 
   <mat-form-field class="full-width-field">
-    <input matInput type="text" placeholder="Description" name="description"  [(ngModel)]="model.description">
+    <input matInput type="text" placeholder="Description" [disabled]="disabled" name="description"  [(ngModel)]="model.description">
   </mat-form-field>
 
 
 </mat-dialog-content>
 
 <div mat-dialog-actions>
+<button *ngIf="disabled;else elseBlock" mat-raised-button (click)="onNoClick()">Close</button>
+<ng-template #elseBlock>
   <button mat-raised-button [mat-dialog-close]="model">Save</button>
   <button mat-raised-button (click)="onNoClick()">Cancel</button>
+</ng-template>
 </div>

@@ -10,8 +10,8 @@ import { TransactionsService } from '../../services/transactions/transactions.se
 import { ProductsService } from '../../services/products/products.service';
 import { ScanModalComponent } from './scan-modal/scan-modal.component';
 import { MatSnackBar } from '@angular/material';
-import { Router } from '@angular/router';
 import {Location} from '@angular/common';
+import { AddProductModalComponent } from '../../staff-pages/products-page/add-product-modal/add-product-modal.component';
 
 
 @Component({
@@ -44,7 +44,7 @@ export class CustomerHomeComponent implements OnInit {
     if (productId && productId !== '') {
       this.productsService.getProduct(productId).subscribe(data => {
         if (data) {
-          const entry = new TransactionEntry(uuid(), productId, 1);
+          const entry = new TransactionEntry(uuid(), productId, 1, data);
           this.dataSource.data.push(entry);
           this.dataSource.filter = ''; // forces table refresh
         } else {
@@ -92,4 +92,11 @@ export class CustomerHomeComponent implements OnInit {
     this.dataSource.data.splice(i, 1);
     this.dataSource.filter = '';
   }
+
+  openDialog_ProductInfo(itemProduct) {
+    const dialogRef = this.dialog.open(AddProductModalComponent, {
+      data: {product: itemProduct, disabled: true}
+    });
+  }
+
 }
