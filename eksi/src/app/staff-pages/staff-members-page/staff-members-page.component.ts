@@ -4,6 +4,7 @@ import { StaffService } from '../../services/staff/staff.service';
 import { AddStaffMemberModalComponent } from './add-staff-member-modal/add-staff-member-modal.component';
 import { EditStaffMemberModalComponent } from './edit-staff-member-modal/edit-staff-member-modal.component';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
+import { StaffMember } from '../../models/staff_member.model';
 
 @Component({
   selector: 'app-staff-members-page',
@@ -29,7 +30,7 @@ export class StaffMembersPageComponent implements OnInit {
     dialogRef.afterClosed().subscribe();
   }
 
-  openDialog_EditStaffMember() {
+  openDialog_EditStaffMember(staffMember: StaffMember) {
     const dialogRef = this.dialog.open(EditStaffMemberModalComponent,
     {
 
