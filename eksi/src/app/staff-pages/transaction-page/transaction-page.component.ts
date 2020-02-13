@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { AddTransactionModalComponent } from './add-transaction-modal/add-transaction-modal.component';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
@@ -18,7 +18,8 @@ export class TransactionPageComponent implements OnInit {
   dataSource: MatTableDataSource<Transaction>;
   transactions;
   displayedColumns = ['nNumber',
-'budgetCode', 'timestamp', 'infoButton', 'deleteButton', 'refundButton'];
+ 'budgetCode', 'timestamp', 'infoButton', 'deleteButton', 'refundButton', 'menu'];
+  isMobile = true;
 
   constructor(public dialog: MatDialog,
               private transactionsService: TransactionsService,
@@ -29,6 +30,7 @@ export class TransactionPageComponent implements OnInit {
   ngOnInit() {
     this.transactionsService.getTransactions().subscribe(data =>
     this.dataSource = new MatTableDataSource<Transaction>(data));
+    this.isMobile = window.innerWidth < 500;
   }
 
   openDialog_Transaction(transaction: Transaction = null) {
@@ -140,6 +142,10 @@ export class TransactionPageComponent implements OnInit {
     }
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.isMobile = window.innerWidth < 500;
+  }
 
   search(searchTerm: string) {
     console.log(searchTerm);
