@@ -40,9 +40,25 @@
   color: #fd0058;
 }
 
+.hidden-on-mobile {
+  display: none;
+}
+
+.shown-on-mobile {
+  display: inline;
+}
+
 @media (min-width:500px) {
   .app-menu-button {
     width: 50%;
+  }
+
+  .hidden-on-mobile {
+    display: inline;
+  }
+
+  .shown-on-mobile {
+    display: none;
   }
 }
 

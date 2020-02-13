@@ -10,7 +10,7 @@
   <span class="spacer"></span>
   <div *ngIf="!location.isCurrentPathEqualTo('/s/login')&&!location.isCurrentPathEqualTo('/c/login')">
     <span *ngIf="authoService.isStaff && !location.isCurrentPathEqualTo('/s/home')">
-      <button mat-button (click)="backClicked()">← Back</button>
+      <button mat-button (click)="backClicked()">← <div class="hidden-on-mobile">Back</div></button>
     </span>
     <span>
       <button mat-button (click)="logoutClicked()"> Logout</button>
