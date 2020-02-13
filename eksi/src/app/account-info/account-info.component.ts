@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthoService } from '../services/autho/autho.service';
+import { ConnectionSettingsService } from '../services/connection-settings/connection-settings.service'
 
 @Component({
   selector: 'app-account-info',
@@ -7,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AccountInfoComponent implements OnInit {
-
-  constructor() { }
+  ip: string;
+  constructor(public authoService: AuthoService, public connSettings: ConnectionSettingsService) { }
 
   ngOnInit() {
+    this.ip = this.connSettings.getOrigin();
+  }
+
+  setIp() {
+    this.connSettings.changeOrigin(this.ip);
   }
 
 }

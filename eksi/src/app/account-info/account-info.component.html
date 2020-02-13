@@ -1,1 +1,20 @@
-<p>account-info works!</p>
+<mat-card>
+  <mat-card-header>
+    <h1>Account Information</h1>
+  </mat-card-header>
+  <mat-card-content>
+    <p><b>NNumber: </b>{{authoService.getNNumber()}}</p>
+    <p><b>Current ApiKey: </b>{{authoService.getApiKey()}}</p>
+    <p><b>Connected to server: </b>{{connSettings.getOrigin()}}</p>
+    <p *ngIf="authoService.isStaff"> This is a Staff Account </p>
+    <br>
+    <h2>Change Server: </h2>
+    <form (ngSubmit)="setIp()">
+      <mat-form-field class="full-width-field">
+        <label for="ip"><b>Set by Ip and Port:</b></label>
+        <input matInput type="text" class="form-control" id="ip" required [(ngModel)]="ip" name="ip">
+      </mat-form-field>
+      <button mat-raised-button type="submit">Save</button>
+    </form>
+  </mat-card-content>
+</mat-card>
