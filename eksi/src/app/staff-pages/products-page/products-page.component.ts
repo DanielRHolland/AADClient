@@ -46,12 +46,25 @@ export class ProductsPageComponent implements OnInit
     }
   }
 
-  launchProductDialog(item: Product = null) {
-     const dialogRef = this.dialog.open(AddProductModalComponent,
-      {
-      data: {product: item}
+  editProduct(product: Product) {
+     if (product && product.id && product.id !== '') {
+      this.productsService.saveProduct(product).subscribe( data => {
+        console.log('Success');
+        this.dataSource.data[this.dataSource.data.findIndex(p => p.id === product.id)] = data;
       });
-     dialogRef.afterClosed().subscribe( result => this.addProduct(result));
+    }
+  }
+
+  launchProductDialog(item: Product = null) {
+    const dialogRef = this.dialog.open(AddProductModalComponent,
+    {
+    data: {product: item}
+    });
+    if (item) {
+      dialogRef.afterClosed().subscribe( result => this.editProduct(result));
+    } else {
+      dialogRef.afterClosed().subscribe( result => this.addProduct(result));
+    }
   }
 
   openDialog_EditProduct(product: Product) {
