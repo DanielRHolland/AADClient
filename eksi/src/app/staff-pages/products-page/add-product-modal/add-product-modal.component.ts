@@ -17,7 +17,7 @@ export class AddProductModalComponent implements OnInit {
   model: Product = new Product ('', '', 1, '', 0 , 0, '');
   disabled;
   editMode = false;
-
+  date: Date;
   constructor(public dialog: MatDialog,
               public dialogRef: MatDialogRef<AddProductModalComponent>,
               @Inject(MAT_DIALOG_DATA) public data: InjectedData) {
@@ -33,7 +33,15 @@ export class AddProductModalComponent implements OnInit {
     if (this.data.product != null) {
       this.model = this.data.product;
       this.editMode = true;
+      this.date  = new Date(this.data.product.expiryDate * 1000);
+    } else {
+      this.date = new Date(Date.now() + 31536000000); //1 year from now
     }
     this.disabled = this.data.disabled;
+  }
+
+  onSubmit() {
+    this.model.expiryDate = this.date.getTime() / 1000;
+    this.dialogRef.close(this.model);
   }
 }

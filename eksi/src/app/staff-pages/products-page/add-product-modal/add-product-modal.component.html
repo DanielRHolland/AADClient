@@ -19,9 +19,17 @@ Product
     <input matInput type="text" placeholder="Stock Location" [disabled]="disabled" name="locationName"  [(ngModel)]="model.locationName">
   </mat-form-field>
 
-  <mat-form-field class="full-width-field">
+  <!-- <mat-form-field class="full-width-field">
     <input matInput type="datetime" placeholder="Expiry Date" [disabled]="disabled" name="expiryDate"  [(ngModel)]="model.expiryDate">
+  </mat-form-field> -->
+
+  <mat-form-field class="full-width-field">
+    <mat-label>Expiry Date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
+
 
   <mat-form-field class="full-width-field">
     <input matInput type="number" placeholder="Cost Price" [disabled]="disabled" name="costPrice"  [(ngModel)]="model.costPrice">
@@ -37,7 +45,7 @@ Product
 <div mat-dialog-actions>
 <button *ngIf="disabled;else elseBlock" mat-raised-button (click)="onNoClick()">Close</button>
 <ng-template #elseBlock>
-  <button mat-raised-button [mat-dialog-close]="model">Save</button>
+  <button mat-raised-button (click)="onSubmit()">Save</button>
   <button mat-raised-button (click)="onNoClick()">Cancel</button>
 </ng-template>
 </div>

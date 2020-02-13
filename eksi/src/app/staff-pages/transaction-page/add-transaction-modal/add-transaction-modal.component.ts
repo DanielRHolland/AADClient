@@ -43,10 +43,11 @@ export class AddTransactionModalComponent implements OnInit {
     this.transaction = this.data;
     if (!this.transaction || !this.transaction.transactionId) {
       this.transaction = new Transaction(uuid(), this.authoService.getNNumber(), '',
-      Date.now(), new Array<TransactionEntry>());
+      Date.now() / 1000, new Array<TransactionEntry>());
       this.existingTransaction = false;
     }
     this.entriesDataSource = new MatTableDataSource<TransactionEntry>(this.transaction.items);
+
   }
 
   openDialog_Entry() {
