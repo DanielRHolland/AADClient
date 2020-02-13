@@ -88,10 +88,12 @@ export class BarcodeReaderComponent implements OnInit {
 
   private logCode(result) {
     const code = result.codeResult.code;
-    this.ref.detectChanges();
-    Quagga.stop();
-    this.barcode = '';
-    this.codeOutput.emit(code);
+    if (this.barcode !== code) {
+      this.barcode = code;
+      this.ref.detectChanges();
+      console.log(this.barcode);
+      Quagga.stop();
+      this.codeOutput.emit(code);
+    }
   }
-
 }
