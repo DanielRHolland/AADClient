@@ -36,6 +36,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   logoutClicked() {
+    this.authoService.logOut();
     this.router.navigateByUrl(this.authoService.isStaff ? '/s/login' : '/c/login');
   }
 }
