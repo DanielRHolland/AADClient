@@ -56,7 +56,12 @@ export class TransactionPageComponent implements OnInit {
       this.transactionsService.saveTransaction(transaction).subscribe(data => {
           console.log('Success');
           this.saveEntries(data.transactionId, transaction.items);
-          this.dataSource.data.push(data);
+          const i = this.dataSource.data.findIndex(t => t.transactionId === data.transactionId);
+          if (i !== -1) {
+            this.dataSource.data[i] = data;
+          } else {
+            this.dataSource.data.push(data);
+          }
           this.dataSource.filter = '';
         },
         error => {
