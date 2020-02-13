@@ -69,7 +69,7 @@ export class CustomerHomeComponent implements OnInit {
       this.snackBar.open('No Budget Code Provided', 'close');
     } else {
       const transaction = new Transaction(uuid(), this.authoService.getNNumber(),
-      budgetCode, Date.now(), this.dataSource.data);
+      budgetCode, Date.now() / 1000, this.dataSource.data);
       this.transactionsService.saveTransaction(transaction).subscribe(
         data => this.saveEntries(data.transactionId, this.dataSource.data),
         error => {console.error('Checkout Failed!'); this.snackBar.open('Checkout Unsuccessful', 'close'); });
