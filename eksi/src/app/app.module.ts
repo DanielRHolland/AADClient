@@ -35,6 +35,7 @@ import { BarcodeReaderComponent } from './barcode-reader/barcode-reader.componen
 import { SearchboxComponent } from './searchbox/searchbox.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
+import { FromToDialogComponent } from './from-to-dialog/from-to-dialog.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { PurchaseOrderComponent } from './purchase-order/purchase-order.componen
     SearchboxComponent,
     ConfirmDialogComponent,
     PurchaseOrderComponent,
+    FromToDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +82,8 @@ import { PurchaseOrderComponent } from './purchase-order/purchase-order.componen
     AddProductModalComponent,
     AddTransactionModalComponent,
     AddStaffMemberModalComponent,
-    ConfirmDialogComponent ]
+    ConfirmDialogComponent,
+  FromToDialogComponent ]
 })
 
 export class AppModule { }

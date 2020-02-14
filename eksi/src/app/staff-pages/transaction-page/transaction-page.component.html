@@ -63,13 +63,15 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-
 <mat-toolbar class="bottom-toolbar" >
   <span>
     <button mat-raised-button class="btn" (click)="openDialog_Transaction()">  <img src='assets/img/add.png' width='30'> Add <div class="hidden-on-mobile"> Transaction </div> </button>
   </span>
   <span>
-    <button mat-raised-button class="btn" (click)="getCsv()"> ↓ Download CSV </button>
+    <button mat-raised-button class="btn" (click)="openDialog_Csv()"> ↓ <div class="hidden-on-mobile">Download CSV</div> Log</button>
+  </span>
+  <span>
+    <button mat-raised-button class="btn" (click)="openDialog_ReportCsv()"> ↓ <div class="hidden-on-mobile">Download CSV</div> Report</button>
   </span>
   <span class="spacer"></span>
 

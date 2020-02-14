@@ -36,6 +36,22 @@ export class TransactionsService {
     return this.httpClient.post<TransactionEntry[]>(this.getOrigin() + '/entries/s/' + transactionId, transactionEntries, this.connSettings.getOptions());
   }
 
+  public getCsv(from: number = 0, to: number = Date.now() / 1000) {
+    const httpOptions = {
+      responseType: 'blob' as 'json',
+      headers: this.connSettings.getOptions().headers
+    };
+    return this.httpClient.get(this.getOrigin() + '/csv/' + Math.floor(from) + '/' + Math.floor(to), httpOptions);
+  }
+
+  public getReportCsv(from: number = 0, to: number = Date.now() / 1000) {
+    const httpOptions = {
+      responseType: 'blob' as 'json',
+      headers: this.connSettings.getOptions().headers
+    };
+    return this.httpClient.get(this.getOrigin() + '/report/csv/' + Math.floor(from) + '/' + Math.floor(to), httpOptions);
+  }
+
   private getOrigin() {
     return this.connSettings.getOrigin() + '/transaction';
   }

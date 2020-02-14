@@ -7,6 +7,7 @@ import { Transaction } from '../../models/transaction.model';
 import { MatSnackBar } from '@angular/material';
 import { v4 as uuid } from 'uuid';
 import { TransactionEntry } from '../../models/transaction-entry.model';
+import { FromToDialogComponent } from '../../from-to-dialog/from-to-dialog.component';
 
 @Component({
   selector: 'app-transaction-page',
@@ -151,7 +152,7 @@ export class TransactionPageComponent implements OnInit {
     console.log(searchTerm);
   }
 
-  getCsv() {
+  getCsv(from: number = 0, to: number = Date.now()) {
     this.transactionsService.getCsv().subscribe(data => {
       // blob = new Blob([data as BlobPart], {type: 'application/csv'});
       const downloadURL = window.URL.createObjectURL(data);
@@ -160,6 +161,43 @@ export class TransactionPageComponent implements OnInit {
       link.download = 'transactions.csv';
       link.click();
     });
+  }
+
+  getReportCsv(from: number = 0, to: number = Date.now()) {
+    this.transactionsService.getReportCsv().subscribe(data => {
+      // blob = new Blob([data as BlobPart], {type: 'application/csv'});
+      const downloadURL = window.URL.createObjectURL(data);
+      const link = document.createElement('a');
+      link.href = downloadURL;
+      link.download = 'transactions.csv';
+      link.click();
+    });
+  }
+
+  openDialog_Csv() {
+    const msg = 'Report';
+    const dialogRef = this.dialog.open(FromToDialogComponent,
+      {
+        data: msg
+      });
+    dialogRef.afterClosed().subscribe(response => {
+        if (response) {
+          this.getCsv((response.from as Date).getTime() / 1000, (response.to as Date).getTime() / 1000);
+        }
+      });
+  }
+
+  openDialog_ReportCsv() {
+    const msg = 'Report';
+    const dialogRef = this.dialog.open(FromToDialogComponent,
+      {
+        data: msg
+      });
+    dialogRef.afterClosed().subscribe(response => {
+        if (response) {
+          this.getReportCsv((response.from as Date).getTime() / 1000, (response.to as Date).getTime() / 1000);
+        }
+      });
   }
 }
 

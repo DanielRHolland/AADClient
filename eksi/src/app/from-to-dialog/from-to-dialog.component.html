@@ -1,0 +1,18 @@
+<div mat-dialog-content>
+  <mat-form-field class="full-width-field">
+    <mat-label>Report From Date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="fromTo.from">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="full-width-field">
+    <mat-label>Report To Date</mat-label>
+    <input matInput [matDatepicker]="picker2" [(ngModel)]="fromTo.to">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+
+   <button mat-raised-button (click)="onNoClick()">No</button>
+   <button mat-raised-button (click)="onSubmit()">Yes</button>
+</div>
