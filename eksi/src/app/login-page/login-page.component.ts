@@ -15,7 +15,7 @@ export class LoginPageComponent implements OnInit {
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, public authoService: AuthoService, private snackBar: MatSnackBar) { }
 
-  user: StaffMember = new StaffMember('', '');
+  user: StaffMember = new StaffMember('', '', '', 0);
   ngOnInit() {
     this.activatedRoute.data.subscribe(x => this.authoService.isStaff = x['isStaff']);
   }

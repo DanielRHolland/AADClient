@@ -1,28 +1,29 @@
-<!--dialog box table code-->
-<h1 mat-dialog-title> Hello User </h1>
+<h1 mat-dialog-title> Staff </h1>
 
-<div mat-dialog-content>
-  <p>
-    Please fill in the below details:
-  </p>
+<mat-dialog-content>
 
-  <form action="/action_page.php">
-    Image upload:   
-    <input type="button" value="Upload">
-    <br><br>
+  <mat-form-field class="full-width-field">
+    <input matInput type="text" placeholder="ID" name="id" [disabled]="editMode || disabled"  required [(ngModel)]="model.id">
+  </mat-form-field>
 
-    Employee ID:<br>
-    <input type="text" name="employeeid">
-    <br><br>
+  <mat-form-field class="full-width-field">
+    <input matInput type="text" placeholder="Username" name="username" [disabled]="disabled"  required [(ngModel)]="model.username">
+  </mat-form-field>
 
-    Employee Name:<br>
-    <input type="text" name="employeename">
-    <br><br>
+  <mat-form-field class="full-width-field">
+    <input matInput type="text" placeholder="Password" name="password" [disabled]="disabled"  required [(ngModel)]="model.password">
+  </mat-form-field>
 
-    <input type="submit" value="Save Record">
-  </form>
-</div>
+  <mat-form-field class="full-width-field">
+    <input matInput type="number" placeholder="Access Level" name="privLevel" [disabled]="disabled"  required [(ngModel)]="model.privLevel">
+  </mat-form-field>
 
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Close prompt</button>
-</div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button *ngIf="disabled;else elseBlock" mat-raised-button (click)="onNoClick()">Close</button>
+  <ng-template #elseBlock>
+    <button mat-raised-button (click)="onSubmit()">Save</button>
+    <button mat-raised-button (click)="onNoClick()">Cancel</button>
+  </ng-template>
+</mat-dialog-actions>

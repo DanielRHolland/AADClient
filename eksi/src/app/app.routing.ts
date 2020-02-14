@@ -7,7 +7,8 @@ import { AccountInfoComponent } from './account-info/account-info.component';
 import { ProductsPageComponent } from './staff-pages/products-page/products-page.component';
 import { TransactionPageComponent } from './staff-pages/transaction-page/transaction-page.component';
 import { StartingPageComponent } from './starting-page/starting-page.component';
-import {StaffMembersPageComponent } from './staff-pages/staff-members-page/staff-members-page.component';
+import { StaffMembersPageComponent } from './staff-pages/staff-members-page/staff-members-page.component';
+import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
 
 const routes: Routes = [
     { path: '', component: StartingPageComponent },
@@ -19,8 +20,7 @@ const routes: Routes = [
     { path: 's/products', component: ProductsPageComponent },
     { path: 's/transactions', component: TransactionPageComponent },
     { path: 's/members', component: StaffMembersPageComponent },
-
-    // otherwise redirect to home
+    { path: 's/purchaseorder', component: PurchaseOrderComponent },
     { path: '**', redirectTo: '' }
 ];
 

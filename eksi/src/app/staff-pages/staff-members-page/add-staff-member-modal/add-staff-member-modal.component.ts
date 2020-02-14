@@ -1,31 +1,42 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { Product } from '../../../models/product.model';
+import { StaffMember } from '../../../models/staff_member.model';
+
+class InjectedData {
+  constructor(public staffMember: StaffMember, public disabled: boolean = false) {}
+}
 
 @Component({
   selector: 'app-add-staff-member-modal',
   templateUrl: './add-staff-member-modal.component.html',
   styleUrls: ['./add-staff-member-modal.component.css']
 })
-
-export class AddStaffMemberModalComponent implements OnInit
-{
-  model = new Product('eg0', 'nom', 1, 'main stores', 1000, 120, 'example 0');
-
+export class AddStaffMemberModalComponent implements OnInit {
+  model: StaffMember;
+  disabled = false;
+  editMode = false;
 
 
   constructor(public dialog: MatDialog,
-              public dialogRef: MatDialogRef<AddStaffMemberModalComponent>) {
-
+              public dialogRef: MatDialogRef<AddStaffMemberModalComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: InjectedData) {
   }
 
-  onNoClick(): void
-  {
+  ngOnInit() {
+    if (this.data.staffMember != null) {
+      this.model = this.data.staffMember;
+      this.editMode = true;
+    } else {
+      this.model = new StaffMember('', '', '', 1);
+    }
+    this.disabled = this.data.disabled;
+  }
+
+  onNoClick(): void {
     this.dialogRef.close(); // Closes the dialog box
   }
 
-  ngOnInit()
-  {
-
+  onSubmit() {
+    this.dialogRef.close(this.model);
   }
 }

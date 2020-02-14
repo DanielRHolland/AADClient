@@ -10,7 +10,6 @@ import { LoginPageComponent } from './login-page/login-page.component';
 
 import {StaffMembersPageComponent } from './staff-pages/staff-members-page/staff-members-page.component';
 import {AddStaffMemberModalComponent } from './staff-pages/staff-members-page/add-staff-member-modal/add-staff-member-modal.component';
-import {EditStaffMemberModalComponent } from './staff-pages/staff-members-page/edit-staff-member-modal/edit-staff-member-modal.component';
 import { ScanModalComponent } from './customer-pages/customer-home-page/scan-modal/scan-modal.component';
 import { ManualModalComponent } from './customer-pages/customer-home-page/manual-modal/manual-modal.component';
 import { CheckoutModalComponent } from './customer-pages/customer-home-page/checkout-modal/checkout-modal.component';
@@ -35,6 +34,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { BarcodeReaderComponent } from './barcode-reader/barcode-reader.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
 
 
 @NgModule({
@@ -54,11 +54,11 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     TransactionPageComponent,
     AddTransactionModalComponent,
     StartingPageComponent,
-    EditStaffMemberModalComponent,
     ToolbarComponent,
     BarcodeReaderComponent,
     SearchboxComponent,
     ConfirmDialogComponent,
+    PurchaseOrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +80,6 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     AddProductModalComponent,
     AddTransactionModalComponent,
     AddStaffMemberModalComponent,
-    EditStaffMemberModalComponent,
     ConfirmDialogComponent ]
 })
 
