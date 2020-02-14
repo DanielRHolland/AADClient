@@ -5,3 +5,7 @@
 table {
   width: 100%;
 }
+
+.mat-raised-button {
+  margin-right: 5px;
+}

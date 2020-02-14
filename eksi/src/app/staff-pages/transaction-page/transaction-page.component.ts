@@ -150,4 +150,16 @@ export class TransactionPageComponent implements OnInit {
   search(searchTerm: string) {
     console.log(searchTerm);
   }
+
+  getCsv() {
+    this.transactionsService.getCsv().subscribe(data => {
+      // blob = new Blob([data as BlobPart], {type: 'application/csv'});
+      const downloadURL = window.URL.createObjectURL(data);
+      const link = document.createElement('a');
+      link.href = downloadURL;
+      link.download = 'transactions.csv';
+      link.click();
+    });
+  }
 }
+
