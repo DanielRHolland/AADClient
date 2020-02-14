@@ -25,7 +25,7 @@ export class AuthoService {
       this.getOrigin()
       + '/l'
       + '?id=' + user.id
-      + '&hash=' + this.hash(user.password));
+      + '&hash=' + this.hash(user.passwordHash));
     this.changeNNumber(user.id);
     obs.subscribe(data => this.changeApiKey( data ));
     return obs;
