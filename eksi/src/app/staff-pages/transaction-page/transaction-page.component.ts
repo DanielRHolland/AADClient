@@ -199,5 +199,18 @@ export class TransactionPageComponent implements OnInit {
         }
       });
   }
+
+  toFromLaunch() {
+    const msg = 'Report';
+    const dialogRef = this.dialog.open(FromToDialogComponent,
+      {
+        data: msg
+      });
+    dialogRef.afterClosed().subscribe(response => {
+        if (response) {
+          this.transactionsService.getTransactionsBounded((response.from as Date).getTime() / 1000, (response.to as Date).getTime() / 1000);
+        }
+      });
+  }
 }
 

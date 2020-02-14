@@ -12,8 +12,8 @@ export class ProductsService {
 
   constructor(private httpClient: HttpClient, private connSettings: ConnectionSettingsService ) { }
 
-  public getProducts() {
-    return this.httpClient.get<Product[]>(this.getOrigin() + '/l');
+  public getProducts(searchTerm: string = '') {
+    return this.httpClient.get<Product[]>(this.getOrigin() + '/l' + '?st=' + searchTerm);
   }
 
   public getProduct(id: string) {

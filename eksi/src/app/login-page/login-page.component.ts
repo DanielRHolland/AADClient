@@ -17,13 +17,24 @@ export class LoginPageComponent implements OnInit {
 
   user: StaffMember = new StaffMember('', '', '', 0);
   ngOnInit() {
-    this.activatedRoute.data.subscribe(x => this.authoService.isStaff = x['isStaff']);
+    this.activatedRoute.data.subscribe(x => this.authoService.isStaff = x.isStaff);
   }
 
   onSubmit() {
     if (this.user.id && this.user.id !== '') {
       if (this.authoService.isStaff) {
-        this.authoService.login(this.user).subscribe(data => this.success(data), error => this.failure(error));
+        this.authoService.login(this.user).subscribe(data => console.log(data), error => this.failure(error));
+        this.authoService.check(this.user).subscribe(data => {
+          if (data) {
+            this.success(data);
+          } else {
+            this.failure(data);
+          }
+        },
+          error => {
+            this.snackBar.open('Failed to login as staff', 'close');
+          }
+        );
       } else {
         this.authoService.changeNNumber(this.user.id);
         this.router.navigateByUrl('/c/home');

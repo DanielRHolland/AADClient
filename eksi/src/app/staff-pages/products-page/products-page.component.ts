@@ -114,5 +114,9 @@ export class ProductsPageComponent implements OnInit {
 
   search(query: string) {
     console.log(query);
+    this.productsService.getProducts(query).subscribe(data => {
+        this.dataSource.data = data;
+        this.dataSource.filter = '';
+    });
   }
 }

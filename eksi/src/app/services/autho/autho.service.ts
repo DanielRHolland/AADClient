@@ -31,6 +31,10 @@ export class AuthoService {
     return obs;
   }
 
+  public check(user: StaffMember) {
+    return this.httpClient.get<boolean>(this.connSettings.getOrigin() + '/staff/g/password/' + user.id + ',' + user.passwordHash);
+  }
+
   private hash(s: string) {
     return s;
   }
@@ -59,5 +63,4 @@ export class AuthoService {
     this.changeApiKey(null);
     this.changeNNumber(null);
   }
-
 }

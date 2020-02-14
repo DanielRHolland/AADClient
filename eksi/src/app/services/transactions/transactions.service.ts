@@ -17,7 +17,7 @@ export class TransactionsService {
     return this.httpClient.get<Transaction[]>(this.getOrigin() + '/l');
   }
 
-  public getTransactionsBounded(startDate: number, endDate:number) {
+  public getTransactionsBounded(startDate: number, endDate: number) {
     return this.httpClient.get<Transaction[]>(this.getOrigin() + '/l/' + startDate + endDate);
   }
 
