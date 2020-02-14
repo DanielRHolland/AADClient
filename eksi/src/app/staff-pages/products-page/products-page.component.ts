@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { MatDialog, MatSnackBar, MatTableDataSource } from '@angular/material';
 import { ProductsService } from '../../services/products/products.service';
 import { AddProductModalComponent } from './add-product-modal/add-product-modal.component';
@@ -11,18 +11,18 @@ import { Product } from '../../models/product.model';
   styleUrls: ['./products-page.component.css']
 })
 
-export class ProductsPageComponent implements OnInit
-{
+export class ProductsPageComponent implements OnInit {
   displayedColumns = ['id', 'name', 'quantity',
    'locationName', 'expiryDate',
-    'costPrice', 'description', 'editButton', 'deleteButton'];
+    'costPrice', 'description', 'editButton', 'deleteButton', 'menu'];
   dataSource: MatTableDataSource<Product>; // products: Product[];
-
+  isMobile = false;
   constructor(private productsService: ProductsService, public dialog: MatDialog, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<Product>();
     this.update();
+    this.isMobile = window.innerWidth < 500;
   }
 
   update() {
@@ -58,7 +58,7 @@ export class ProductsPageComponent implements OnInit
   launchProductDialog(item: Product = null) {
     const dialogRef = this.dialog.open(AddProductModalComponent,
     {
-    data: {product: item}
+       data: {product: item}
     });
     if (item) {
       dialogRef.afterClosed().subscribe( result => this.editProduct(result));
@@ -69,6 +69,12 @@ export class ProductsPageComponent implements OnInit
 
   openDialog_EditProduct(product: Product) {
     this.launchProductDialog(product);
+  }
+
+  openDialog_InfoProduct(item: Product) {
+    this.dialog.open(AddProductModalComponent, {
+      data: {product: item, disabled: true}
+    });
   }
 
   openDialog_DeleteProduct(item: Product) {
@@ -99,6 +105,12 @@ export class ProductsPageComponent implements OnInit
       });
     }
   }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.isMobile = window.innerWidth < 500;
+  }
+
 
   search(query: string) {
     console.log(query);
